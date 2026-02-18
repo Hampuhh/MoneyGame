@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="theme-color" content="#E8D5F2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Mi Finanzas">
+    <title>Mi Finanzas 🐻</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+        :root {
+            --primary: #9B7FB8;
+            --primary-light: #E8D5F2;
+            --primary-dark: #6B4FA0;
+            --accent-warm: #F5C99C;
+            --accent-cool: #A8D8EA;
+            --success: #90CC91;
+            --warning: #FFD580;
+            --danger: #FF9B9B;
+            --bg: #FDF8F4;
+            --surface: #FFFFFF;
+            --text: #3D2B4F;
+            --text-light: #8B7FA8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 16px;
+            padding-bottom: 100px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: white;
+            box-shadow: 0 8px 16px rgba(155, 127, 184, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bear-emoji {
+            font-size: 3.5em;
+            float: right;
+            opacity: 0.8;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 4px;
+            font-weight: 900;
+        }
+
+        header p {
+            opacity: 0.95;
+            font-size: 0.95em;
+        }
+
+        .month-selector {
+            background: var(--surface);
+            padding: 12px 16px;
+            border-radius: 15px;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            border: 2px solid var(--primary-light);
+        }
+
+        .month-selector label {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .month-selector input {
+            flex: 1;
+            border: none;
+            background: var(--primary-light);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-family: 'Varela Round';
+            color: var(--primary-dark);
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            border-radius: 15px;
+            background: var(--surface);
+            padding: 4px;
+            border: 2px solid var(--primary-light);
+        }
+
+        .tab-btn {
+            padding: 10px 14px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.85em;
+            color: var(--text-light);
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-family: 'Varela Round';
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border-radius: 15px;
+            padding: 16px;
+            border: 2px solid var(--primary-light);
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-card.income {
+            border-color: rgba(144, 204, 145, 0.3);
+            background: rgba(144, 204, 145, 0.05);
+        }
+
+        .stat-card.expense {
+            border-color: rgba(255, 155, 155, 0.3);
+            background: rgba(255, 155, 155, 0.05);
+        }
+
+        .stat-card.savings {
+            border-color: rgba(168, 216, 234, 0.3);
+            background: rgba(168, 216, 234, 0.05);
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.8em;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 1.8em;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .stat-card.income .stat-value {
+            color: var(--success);
+        }
+
+        .stat-card.expense .stat-value {
+            color: var(--danger);
+        }
+
+        .stat-card.savings .stat-value {
+            color: var(--accent-cool);
+        }
+
+        h2 {
+            font-size: 1.3em;
+            margin: 20px 0 12px 0;
+            color: var(--primary);
+        }
+
+        .form-card {
+            background: var(--surface);
+            border-radius: 15px;
+            padding: 16px;
+            border: 2px solid var(--primary-light);
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid var(--primary-light);
+            border-radius: 10px;
+            font-family: 'Varela Round';
+            font-size: 1em;
+            background: var(--bg);
+            color: var(--text);
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(155, 127, 184, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Varela Round';
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(155, 127, 184, 0.2);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        button.danger {
+            background: var(--danger);
+        }
+
+        button.secondary {
+            background: var(--accent-warm);
+            color: var(--text);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--primary-light);
+        }
+
+        th {
+            background: var(--primary-light);
+            padding: 10px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.85em;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--primary-light);
+            font-size: 0.9em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px 16px;
+            color: var(--text-light);
+        }
+
+        .empty-state-emoji {
+            font-size: 3em;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--primary-light);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .goal-card {
+            background: var(--surface);
+            border-radius: 15px;
+            padding: 16px;
+            border: 2px solid var(--primary-light);
+            margin-bottom: 12px;
+        }
+
+        .goal-card.completed {
+            border-color: rgba(144, 204, 145, 0.3);
+            background: rgba(144, 204, 145, 0.05);
+        }
+
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .goal-name {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .goal-status {
+            font-size: 0.8em;
+            color: var(--text-light);
+        }
+
+        .goal-amounts {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .goal-amount {
+            background: var(--primary-light);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.85em;
+        }
+
+        .goal-amount-label {
+            color: var(--text-light);
+            font-size: 0.75em;
+        }
+
+        .goal-amount-value {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1em;
+            margin-top: 2px;
+        }
+
+        .goal-buttons {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .goal-input-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .goal-input-group input {
+            flex: 1;
+        }
+
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 0.8em;
+        }
+
+        .projection-box {
+            background: linear-gradient(135deg, var(--accent-warm) 0%, #FFF4D8 100%);
+            border-radius: 15px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 2px solid var(--warning);
+        }
+
+        .projection-box h3 {
+            color: var(--text);
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .projection-result {
+            background: var(--surface);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border-left: 4px solid var(--warning);
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .bear-emoji {
+                font-size: 2.5em;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-value {
+                font-size: 1.4em;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+
+        @supports (padding: max(0px)) {
+            body {
+                padding-bottom: max(16px, env(safe-area-inset-bottom));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="bear-emoji">🐻</div>
+            <h1>Mi Finanzas</h1>
+            <p>Controla tu dinero, alcanza tus metas ✨</p>
+        </header>
+
+        <div class="month-selector">
+            <label for="monthYear">📅</label>
+            <input type="month" id="monthYear" />
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('dashboard')">📊</button>
+            <button class="tab-btn" onclick="switchTab('income')">💵</button>
+            <button class="tab-btn" onclick="switchTab('expenses')">💸</button>
+            <button class="tab-btn" onclick="switchTab('goals')">🎯</button>
+            <button class="tab-btn" onclick="switchTab('projections')">📈</button>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="tab-content active">
+            <div class="card-grid">
+                <div class="stat-card income">
+                    <div class="stat-label">Ingresos</div>
+                    <div class="stat-value">$<span id="totalIncome">0</span></div>
+                </div>
+                <div class="stat-card expense">
+                    <div class="stat-label">Gastos</div>
+                    <div class="stat-value">$<span id="totalExpenses">0</span></div>
+                </div>
+                <div class="stat-card savings">
+                    <div class="stat-label">Ahorro</div>
+                    <div class="stat-value">$<span id="netSavings">0</span></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Metas</div>
+                    <div class="stat-value"><span id="goalsProgress">0</span>%</div>
+                </div>
+            </div>
+
+            <h2>Resumen</h2>
+            <div class="card-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Tasa Ahorro</div>
+                    <div class="stat-value"><span id="savingsRate">0</span>%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Balance</div>
+                    <div class="stat-value">$<span id="netBalance">0</span></div>
+                </div>
+            </div>
+
+            <h2>Transacciones Recientes</h2>
+            <div id="recentTransactions"></div>
+        </div>
+
+        <!-- Ingresos -->
+        <div id="income" class="tab-content">
+            <div class="form-card">
+                <h2 style="margin-top: 0;">Agregar Ingreso</h2>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <input type="text" id="incomeDesc" placeholder="Sueldo, Freelance...">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Monto</label>
+                        <input type="number" id="incomeAmount" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Frecuencia</label>
+                        <select id="incomeFreq">
+                            <option value="monthly">Mensual</option>
+                            <option value="weekly">Semanal</option>
+                            <option value="daily">Diario</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="addIncome()">💰 Agregar</button>
+            </div>
+
+            <h2>Mis Ingresos</h2>
+            <div id="incomeList"></div>
+        </div>
+
+        <!-- Gastos -->
+        <div id="expenses" class="tab-content">
+            <div class="form-card">
+                <h2 style="margin-top: 0;">Agregar Gasto</h2>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <input type="text" id="expenseDesc" placeholder="Alquiler, Comida...">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Monto</label>
+                        <input type="number" id="expenseAmount" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        <select id="expenseCategory">
+                            <option value="vivienda">🏠 Vivienda</option>
+                            <option value="comida">🍔 Comida</option>
+                            <option value="transporte">🚗 Transporte</option>
+                            <option value="salud">⚕️ Salud</option>
+                            <option value="suscripciones">📱 Suscripciones</option>
+                            <option value="entretenimiento">🎮 Entretenimiento</option>
+                            <option value="otro">📌 Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Frecuencia</label>
+                        <select id="expenseFreq">
+                            <option value="monthly">Mensual</option>
+                            <option value="weekly">Semanal</option>
+                            <option value="daily">Diario</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Prioridad</label>
+                        <select id="expensePriority">
+                            <option value="essential">Esencial</option>
+                            <option value="important">Importante</option>
+                            <option value="optional">Opcional</option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="addExpense()">💸 Agregar</button>
+            </div>
+
+            <h2>Mis Gastos</h2>
+            <div id="expenseList"></div>
+        </div>
+
+        <!-- Metas -->
+        <div id="goals" class="tab-content">
+            <div class="form-card">
+                <h2 style="margin-top: 0;">Nueva Meta</h2>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" id="goalName" placeholder="Vacaciones, Auto...">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Meta ($)</label>
+                        <input type="number" id="goalAmount" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Ahorrado ($)</label>
+                        <input type="number" id="goalCurrent" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Plazo (meses)</label>
+                        <input type="number" id="goalDeadline" placeholder="12" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Interés Anual (%)</label>
+                        <input type="number" id="goalInterest" placeholder="0" min="0" step="0.01">
+                    </div>
+                </div>
+                <button onclick="addGoal()">🎯 Crear Meta</button>
+            </div>
+
+            <h2>Mis Metas</h2>
+            <div id="goalsList"></div>
+        </div>
+
+        <!-- Proyecciones -->
+        <div id="projections" class="tab-content">
+            <div class="projection-box">
+                <h3>Calculadora de Proyecciones</h3>
+                <div class="form-group">
+                    <label>Meta de Ahorro ($)</label>
+                    <input type="number" id="projGoal" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ahorro Actual ($)</label>
+                        <input type="number" id="projCurrent" placeholder="0" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Plazo (meses)</label>
+                        <input type="number" id="projMonths" placeholder="12" min="1">
+                    </div>
+                </div>
+                <button onclick="calculateMonthlyNeeded()">📊 Calcular</button>
+                <div id="projectionResults" style="margin-top: 12px;"></div>
+            </div>
+
+            <h2>Análisis Financiero</h2>
+            <div id="financialAnalysis" class="form-card"></div>
+        </div>
+    </div>
+
+    <script>
+        let data = {};
+        let currentMonth = new Date().toISOString().substring(0, 7);
+
+        function initMonthSelector() {
+            const input = document.getElementById('monthYear');
+            input.value = currentMonth;
+            input.addEventListener('change', (e) => {
+                currentMonth = e.target.value;
+                loadData();
+            });
+        }
+
+        function getMonthData() {
+            if (!data[currentMonth]) {
+                data[currentMonth] = { income: [], expenses: [], goals: [] };
+            }
+            return data[currentMonth];
+        }
+
+        function loadData() {
+            try {
+                const saved = localStorage.getItem('financialData');
+                if (saved) data = JSON.parse(saved);
+            } catch (e) {}
+            if (!data[currentMonth]) {
+                data[currentMonth] = { income: [], expenses: [], goals: [] };
+            }
+            updateAllDisplays();
+        }
+
+        function saveData() {
+            try {
+                localStorage.setItem('financialData', JSON.stringify(data));
+            } catch (e) {}
+            updateAllDisplays();
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function addIncome() {
+            const desc = document.getElementById('incomeDesc').value;
+            const amount = parseFloat(document.getElementById('incomeAmount').value);
+            const freq = document.getElementById('incomeFreq').value;
+            
+            if (!desc || !amount) { alert('Completa todos los campos'); return; }
+            
+            getMonthData().income.push({ desc, amount, freq, id: Date.now() });
+            document.getElementById('incomeDesc').value = '';
+            document.getElementById('incomeAmount').value = '';
+            saveData();
+        }
+
+        function addExpense() {
+            const desc = document.getElementById('expenseDesc').value;
+            const amount = parseFloat(document.getElementById('expenseAmount').value);
+            const category = document.getElementById('expenseCategory').value;
+            const freq = document.getElementById('expenseFreq').value;
+            const priority = document.getElementById('expensePriority').value;
+            
+            if (!desc || !amount) { alert('Completa todos los campos'); return; }
+            
+            getMonthData().expenses.push({ desc, amount, category, freq, priority, id: Date.now() });
+            document.getElementById('expenseDesc').value = '';
+            document.getElementById('expenseAmount').value = '';
+            saveData();
+        }
+
+        function addGoal() {
+            const name = document.getElementById('goalName').value;
+            const target = parseFloat(document.getElementById('goalAmount').value);
+            const current = parseFloat(document.getElementById('goalCurrent').value) || 0;
+            const deadline = parseFloat(document.getElementById('goalDeadline').value);
+            const interest = parseFloat(document.getElementById('goalInterest').value) || 0;
+            
+            if (!name || !target) { alert('Completa todos los campos'); return; }
+            
+            getMonthData().goals.push({ name, target, current, deadline, interest, id: Date.now() });
+            document.getElementById('goalName').value = '';
+            document.getElementById('goalAmount').value = '';
+            document.getElementById('goalCurrent').value = '';
+            document.getElementById('goalDeadline').value = '12';
+            document.getElementById('goalInterest').value = '0';
+            saveData();
+        }
+
+        function deleteItem(type, id) {
+            const monthData = getMonthData();
+            if (type === 'income') monthData.income = monthData.income.filter(i => i.id !== id);
+            if (type === 'expense') monthData.expenses = monthData.expenses.filter(i => i.id !== id);
+            if (type === 'goal') monthData.goals = monthData.goals.filter(i => i.id !== id);
+            saveData();
+        }
+
+        function updateGoal(id, newAmount) {
+            const goal = getMonthData().goals.find(g => g.id === id);
+            if (goal) {
+                goal.current = parseFloat(newAmount);
+                saveData();
+            }
+        }
+
+        function calculateIncome() {
+            return getMonthData().income.reduce((sum, i) => {
+                let mult = 1;
+                if (i.freq === 'weekly') mult = 4.33;
+                if (i.freq === 'daily') mult = 30;
+                return sum + (i.amount * mult);
+            }, 0);
+        }
+
+        function calculateExpenses() {
+            return getMonthData().expenses.reduce((sum, e) => {
+                let mult = 1;
+                if (e.freq === 'weekly') mult = 4.33;
+                if (e.freq === 'daily') mult = 30;
+                return sum + (e.amount * mult);
+            }, 0);
+        }
+
+        function calculateMonthlyNeeded(target, current, months, rate) {
+            if (months <= 0) return 0;
+            const monthlyRate = rate / 100 / 12;
+            const needed = target - (current * Math.pow(1 + monthlyRate, months));
+            if (monthlyRate === 0) return needed / months;
+            const factor = (Math.pow(1 + monthlyRate, months) - 1) / monthlyRate;
+            return Math.max(0, needed / factor);
+        }
+
+        function updateAllDisplays() {
+            updateDashboard();
+            updateIncomeList();
+            updateExpenseList();
+            updateGoalsList();
+            updateProjections();
+        }
+
+        function updateDashboard() {
+            const income = calculateIncome();
+            const expenses = calculateExpenses();
+            const savings = income - expenses;
+            const savingsRate = income > 0 ? ((savings / income) * 100) : 0;
+
+            document.getElementById('totalIncome').textContent = income.toFixed(0);
+            document.getElementById('totalExpenses').textContent = expenses.toFixed(0);
+            document.getElementById('netSavings').textContent = Math.max(0, savings).toFixed(0);
+            document.getElementById('netBalance').textContent = savings.toFixed(0);
+            document.getElementById('savingsRate').textContent = Math.max(0, savingsRate).toFixed(0);
+
+            const monthData = getMonthData();
+            if (monthData.goals.length > 0) {
+                const totalGoal = monthData.goals.reduce((sum, g) => sum + g.target, 0);
+                const totalCurrent = monthData.goals.reduce((sum, g) => sum + g.current, 0);
+                const progress = totalGoal > 0 ? ((totalCurrent / totalGoal) * 100) : 0;
+                document.getElementById('goalsProgress').textContent = progress.toFixed(0);
+            }
+
+            updateRecentTransactions();
+        }
+
+        function updateRecentTransactions() {
+            const monthData = getMonthData();
+            const all = [
+                ...monthData.income.map(i => ({ ...i, type: 'income' })),
+                ...monthData.expenses.map(e => ({ ...e, type: 'expense' }))
+            ].sort((a, b) => b.id - a.id).slice(0, 5);
+
+            if (all.length === 0) {
+                document.getElementById('recentTransactions').innerHTML = '<div class="empty-state"><div class="empty-state-emoji">📝</div><p>Sin transacciones aún</p></div>';
+                return;
+            }
+
+            let html = '<table><tr><th>Descripción</th><th>Monto</th></tr>';
+            all.forEach(t => {
+                const icon = t.type === 'income' ? '💰' : '💸';
+                html += `<tr><td>${icon} ${t.desc || t.category}</td><td>$${t.amount.toFixed(0)}</td></tr>`;
+            });
+            html += '</table>';
+            document.getElementById('recentTransactions').innerHTML = html;
+        }
+
+        function updateIncomeList() {
+            const monthData = getMonthData();
+            if (monthData.income.length === 0) {
+                document.getElementById('incomeList').innerHTML = '<div class="empty-state"><div class="empty-state-emoji">💵</div><p>Sin ingresos registrados</p></div>';
+                return;
+            }
+
+            let html = '<table><tr><th>Descripción</th><th>Monto</th><th></th></tr>';
+            monthData.income.forEach(item => {
+                html += `<tr><td>${item.desc}</td><td>$${item.amount.toFixed(0)}</td><td><button class="btn-small danger" onclick="deleteItem('income', ${item.id})">Eliminar</button></td></tr>`;
+            });
+            html += '</table>';
+            document.getElementById('incomeList').innerHTML = html;
+        }
+
+        function updateExpenseList() {
+            const monthData = getMonthData();
+            if (monthData.expenses.length === 0) {
+                document.getElementById('expenseList').innerHTML = '<div class="empty-state"><div class="empty-state-emoji">💸</div><p>Sin gastos registrados</p></div>';
+                return;
+            }
+
+            let html = '<table><tr><th>Descripción</th><th>Monto</th><th></th></tr>';
+            monthData.expenses.forEach(item => {
+                html += `<tr><td>${item.desc}</td><td>$${item.amount.toFixed(0)}</td><td><button class="btn-small danger" onclick="deleteItem('expense', ${item.id})">X</button></td></tr>`;
+            });
+            html += '</table>';
+            document.getElementById('expenseList').innerHTML = html;
+        }
+
+        function updateGoalsList() {
+            const monthData = getMonthData();
+            if (monthData.goals.length === 0) {
+                document.getElementById('goalsList').innerHTML = '<div class="empty-state"><div class="empty-state-emoji">🎯</div><p>Sin metas registradas</p></div>';
+                return;
+            }
+
+            let html = '';
+            monthData.goals.forEach(goal => {
+                const progress = (goal.current / goal.target) * 100;
+                const remaining = goal.target - goal.current;
+                const monthlyNeeded = calculateMonthlyNeeded(goal.target, goal.current, goal.deadline, goal.interest);
+
+                html += `<div class="goal-card ${progress >= 100 ? 'completed' : ''}">
+                    <div class="goal-header">
+                        <div class="goal-name">${goal.name}</div>
+                        <div class="goal-status">${progress.toFixed(0)}%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${Math.min(progress, 100)}%"></div>
+                    </div>
+                    <div class="goal-amounts">
+                        <div class="goal-amount">
+                            <div class="goal-amount-label">Meta</div>
+                            <div class="goal-amount-value">$${goal.target.toFixed(0)}</div>
+                        </div>
+                        <div class="goal-amount">
+                            <div class="goal-amount-label">Ahorrado</div>
+                            <div class="goal-amount-value">$${goal.current.toFixed(0)}</div>
+                        </div>
+                        <div class="goal-amount">
+                            <div class="goal-amount-label">Falta</div>
+                            <div class="goal-amount-value">$${Math.max(0, remaining).toFixed(0)}</div>
+                        </div>
+                    </div>
+                    <div style="background: var(--primary-light); padding: 8px; border-radius: 8px; margin: 8px 0; font-size: 0.85em;">
+                        <strong>Necesitas: $${monthlyNeeded.toFixed(0)}/mes</strong>
+                    </div>
+                    <div class="goal-buttons">
+                        <div class="goal-input-group">
+                            <input type="number" id="goalUpdate${goal.id}" placeholder="Nuevo monto" min="0" step="0.01" />
+                            <button class="secondary btn-small" onclick="updateGoal(${goal.id}, document.getElementById('goalUpdate${goal.id}').value)">✓</button>
+                        </div>
+                        <button class="danger btn-small" onclick="deleteItem('goal', ${goal.id})">Eliminar</button>
+                    </div>
+                </div>`;
+            });
+            document.getElementById('goalsList').innerHTML = html;
+        }
+
+        function calculateMonthlyNeeded() {
+            const goal = parseFloat(document.getElementById('projGoal').value);
+            const current = parseFloat(document.getElementById('projCurrent').value) || 0;
+            const months = parseFloat(document.getElementById('projMonths').value);
+
+            if (!goal || !months) { alert('Completa los campos'); return; }
+
+            const monthly = calculateMonthlyNeeded(goal, current, months, 0);
+            const income = calculateIncome();
+            const expenses = calculateExpenses();
+            const available = Math.max(0, income - expenses);
+
+            let html = '<div class="projection-result">';
+            html += `<div style="font-size: 1.5em; font-weight: 900; color: var(--primary); margin: 8px 0;">$${monthly.toFixed(0)}/mes</div>`;
+            
+            if (available >= monthly) {
+                html += `<div style="color: var(--success); font-weight: 700;">✓ ¡Puedes lograrlo!</div>`;
+            } else {
+                html += `<div style="color: var(--danger); font-weight: 700;">⚠ Te falta $${(monthly - available).toFixed(0)}</div>`;
+            }
+            html += '</div>';
+            document.getElementById('projectionResults').innerHTML = html;
+        }
+
+        function updateProjections() {
+            const income = calculateIncome();
+            const expenses = calculateExpenses();
+            const savings = income - expenses;
+            const monthData = getMonthData();
+
+            let html = `<strong>💰 Ingresos:</strong> $${income.toFixed(0)}<br>
+                       <strong>💸 Gastos:</strong> $${expenses.toFixed(0)}<br>
+                       <strong>🎯 Ahorro disponible:</strong> $${Math.max(0, savings).toFixed(0)}<br>`;
+
+            if (monthData.goals.length > 0) {
+                html += '<br><strong>Metas necesitan:</strong><br>';
+                let totalNeeded = 0;
+                monthData.goals.forEach(goal => {
+                    const needed = calculateMonthlyNeeded(goal.target, goal.current, goal.deadline, goal.interest);
+                    totalNeeded += needed;
+                    html += `• ${goal.name}: $${needed.toFixed(0)}/mes<br>`;
+                });
+                html += `<br><strong>Total: $${totalNeeded.toFixed(0)}/mes</strong><br>`;
+                
+                if (savings >= totalNeeded) {
+                    html += '<div style="color: var(--success); font-weight: 700; margin-top: 8px;">✓ ¡Puedes alcanzar todas tus metas!</div>';
+                } else {
+                    html += `<div style="color: var(--danger); font-weight: 700; margin-top: 8px;">⚠ Te falta $${(totalNeeded - savings).toFixed(0)}/mes</div>`;
+                }
+            }
+
+            document.getElementById('financialAnalysis').innerHTML = html;
+        }
+
+        initMonthSelector();
+        loadData();
+    </script>
+</body>
+</html>
