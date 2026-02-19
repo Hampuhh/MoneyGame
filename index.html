@@ -9,13 +9,13 @@
     <meta name="theme-color" content="#7BA8A8">
     <meta name="description" content="Controla tu dinero, alcanza tus metas">
     
-    <link rel="apple-touch-icon" href="image_10.png">
-    <link rel="icon" type="image/png" href="image_10.png">
+    <link rel="apple-touch-icon" href="./banner.png">
+    <link rel="icon" type="image/png" href="./banner.png">
     
     <title>The Money Game 🐻</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'); /* Fuente gordita para títulos */
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
         * {
             margin: 0;
@@ -50,8 +50,8 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg);
-            /* NUEVO FONDO DE LA APLICACIÓN */
-            background-image: url('image_11.png');
+            /* FONDO DE PAISAJE (Asegúrate de que se llame fondo.png) */
+            background-image: url('./fondo.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -73,42 +73,48 @@
             padding-bottom: 120px;
         }
 
-        /* --- NUEVO BANNER CON IMAGEN Y TEXTO --- */
+        /* --- BANNER PRINCIPAL --- */
         header {
-            /* Fondo semitransparente para que se lea el texto sobre la imagen de fondo */
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.90); /* Fondo blanco semi-transparente */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque */
             border-radius: 24px;
             padding: 15px 20px;
             margin-bottom: 20px;
-            box-shadow: 0 8px 20px rgba(123, 168, 168, 0.15);
-            border: 2px solid white;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0, 0.1);
+            border: 2px solid rgba(255,255,255,0.5);
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Alinear a la izquierda */
+            justify-content: flex-start;
         }
 
         .banner-image {
-            width: 100px; /* Ajusta el tamaño según prefieras */
-            height: auto;
-            border-radius: 16px;
-            margin-right: 20px; /* Espacio entre imagen y texto */
+            width: 80px; 
+            height: 80px;
+            border-radius: 50%; /* Redondo */
+            margin-right: 20px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: #fff;
         }
 
         .header-text h1 {
             font-family: 'Fredoka One', cursive;
-            font-size: 2em;
+            font-size: 1.8em;
             color: var(--primary-dark);
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 0;
-            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
-            white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+            text-shadow: 1px 1px 0px rgba(255,255,255,1);
+        }
+        
+        .header-text p {
+            font-size: 0.8em;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-top: 2px;
         }
 
-        /* --- FIN BANNER --- */
-
+        /* --- RESTO DE ESTILOS --- */
         .month-selector {
             background: var(--surface);
             padding: 10px 14px;
@@ -153,7 +159,7 @@
         .tab-btn {
             padding: 10px 16px;
             border: none;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.8);
             cursor: pointer;
             font-size: 0.9em;
             color: var(--text-light);
@@ -163,12 +169,13 @@
             font-weight: 700;
             white-space: nowrap;
             border: 1px solid transparent;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .tab-btn.active {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 12px rgba(123, 168, 168, 0.3);
+            box-shadow: 0 4px 12px rgba(123, 168, 168, 0.4);
             transform: translateY(-1px);
         }
 
@@ -194,7 +201,8 @@
         }
 
         .stat-card {
-            background: #FFFFFF;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
             border-radius: 16px;
             padding: 16px;
             border: none;
@@ -267,10 +275,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5); /* Sombra para leer mejor sobre fondo */
         }
 
         .form-card {
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -297,7 +306,7 @@
             border-radius: 12px;
             font-family: 'Poppins';
             font-size: 1em;
-            background: var(--bg);
+            background: #FAFAFA;
             color: var(--text);
             transition: border-color 0.2s;
         }
@@ -372,11 +381,13 @@
             color: var(--text-light);
             font-size: 0.75em;
             text-transform: uppercase;
+            background: rgba(255,255,255,0.5); /* Fondo semitransparente para encabezado tabla */
+            border-radius: 4px;
         }
 
         td {
             padding: 12px 10px;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             font-size: 0.9em;
             border-top: 1px solid rgba(0,0,0,0.03);
             border-bottom: 1px solid rgba(0,0,0,0.03);
@@ -398,7 +409,7 @@
             text-align: center;
             padding: 40px 16px;
             color: var(--text-light);
-            background: white;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 16px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
@@ -427,7 +438,7 @@
         }
 
         .goal-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
             padding: 16px;
             margin-bottom: 12px;
@@ -544,20 +555,21 @@
         }
 
         @media (max-width: 380px) {
-            header h1 { font-size: 1.5em; } /* Ajuste para pantallas pequeñas */
+            header h1 { font-size: 1.5em; }
             .stat-value { font-size: 1.2em; }
-            .banner-image { width: 80px; margin-right: 15px; } /* Ajuste para imagen en móviles */
+            .banner-image { width: 60px; height: 60px; margin-right: 15px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="image_10.png" alt="Banner Oso" class="banner-image" onerror="this.style.display='none';">
+            <img src="./banner.png" alt="Bear Banner" class="banner-image" onerror="this.style.display='none'">
             
             <div class="header-text">
                 <h1>The Money Game</h1>
-                </div>
+                <p>Just do it ✨</p>
+            </div>
         </header>
 
         <div class="month-selector">
