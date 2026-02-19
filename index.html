@@ -52,60 +52,33 @@
         .header-text h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; color: #FFFFFF; line-height: 1; margin-bottom: 5px; text-shadow: 0px 2px 4px rgba(0,0,0,0.6); }
         .header-text p { font-size: 0.9em; color: rgba(255, 255, 255, 0.9); font-weight: 600; text-shadow: 0px 1px 2px rgba(0,0,0,0.6); }
 
-        /* --- NUEVO MENÚ TIPO CASILLA (GRID) --- */
+        /* MENÚ DE CASILLAS (GRID) */
         .tabs { 
             display: grid; 
-            grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+            grid-template-columns: repeat(3, 1fr);
             gap: 8px; 
             margin-bottom: 20px; 
         }
         
         .tab-btn { 
-            padding: 8px; 
-            border: none; 
-            background: rgba(255, 255, 255, 0.9); 
-            cursor: pointer; 
-            color: var(--text); 
-            border-radius: 12px; 
-            transition: all 0.1s; 
-            font-family: 'Poppins'; 
-            font-weight: 600; 
-            font-size: 0.75em; /* Texto pequeño para que quepa */
-            border: 1px solid transparent; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
-            
-            /* Alineación vertical (Icono arriba, texto abajo) */
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center;
-            height: 70px; /* Altura fija para que sean cuadrados */
-            gap: 5px;
+            padding: 8px; border: none; background: rgba(255, 255, 255, 0.9); cursor: pointer; color: var(--text); 
+            border-radius: 12px; transition: all 0.1s; font-family: 'Poppins'; font-weight: 600; font-size: 0.75em; 
+            border: 1px solid transparent; box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 70px; gap: 5px;
         }
-        
-        .tab-btn i {
-            font-size: 1.4em; /* Icono grande */
-            margin-bottom: 2px;
-        }
-
-        .tab-btn.active { 
-            background: var(--primary); 
-            color: white; 
-            box-shadow: 0 4px 12px rgba(123, 168, 168, 0.4); 
-            transform: translateY(-2px); 
-            font-weight: 700;
-        }
+        .tab-btn i { font-size: 1.4em; margin-bottom: 2px; }
+        .tab-btn.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(123, 168, 168, 0.4); transform: translateY(-2px); font-weight: 700; }
 
         .tab-content { display: none; animation: fadeIn 0.2s ease-in-out; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* MONTH SELECTOR */
+        /* UI */
         .month-selector { background: rgba(255, 255, 255, 0.95); padding: 10px 14px; border-radius: 12px; margin-bottom: 15px; display: flex; gap: 12px; align-items: center; border: 2px solid var(--border-color); backdrop-filter: blur(5px); }
         .month-selector label { font-weight: 700; color: var(--primary); font-size: 1.2em; }
         .month-selector input { flex: 1; border: none; background: transparent; padding: 8px; font-family: 'Poppins'; font-size: 1em; font-weight: 600; }
 
-        /* CARDS & UI */
         .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
         .stat-card { background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 16px; text-align: center; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06); position: relative; overflow: hidden; }
         .stat-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
@@ -129,7 +102,6 @@
         input, select { width: 100%; padding: 12px; border: 2px solid var(--primary-light); border-radius: 12px; font-family: 'Poppins'; font-size: 1em; background: #FAFAFA; transition: border-color 0.2s; }
         input[type="date"] { -webkit-appearance: none; appearance: none; min-height: 48px; background-color: #FAFAFA; display: block; }
         input:focus, select:focus { outline: none; border-color: var(--primary); background: white; }
-        
         button { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 12px; font-family: 'Poppins'; font-size: 1em; font-weight: 700; cursor: pointer; transition: transform 0.1s; box-shadow: 0 4px 10px rgba(123, 168, 168, 0.3); }
         button:active { transform: scale(0.96); }
         button.danger { background: var(--danger); box-shadow: 0 4px 10px rgba(245, 184, 184, 0.4); }
@@ -143,7 +115,7 @@
         td { padding: 12px 10px; background: rgba(255, 255, 255, 0.95); font-size: 0.9em; border-radius: 10px; }
         .btn-small { padding: 6px 10px; font-size: 0.8em; width: auto; background: #FFE0E0; color: #D65A5A; box-shadow: none; }
 
-        /* Debts */
+        /* Sections */
         .debt-card { background: white; border-radius: 14px; padding: 12px; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #ccc; position: relative; }
         .debt-card.owe { border-left-color: var(--danger); } .debt-card.owed { border-left-color: var(--success); }
         .debt-card.paid { opacity: 0.6; border-left-color: #ccc; background: #f9f9f9; text-decoration: line-through; }
@@ -153,13 +125,11 @@
         .debt-actions { display: flex; gap: 5px; }
         .btn-check { background: var(--success); color: white; padding: 6px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
 
-        /* Shopping */
         .shopping-item { background: white; border-radius: 12px; padding: 12px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
         .shopping-item.checked { opacity: 0.6; background: #F0F4F4; text-decoration: line-through; color: var(--text-light); }
         .shop-actions { display: flex; gap: 8px; }
         .btn-buy { background: var(--primary); color: white; border-radius: 8px; padding: 5px 10px; font-size: 0.8em; font-weight: 600; }
 
-        /* Goals */
         .goal-card { background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 16px; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid transparent; }
         .goal-card.completed { border-color: var(--success); background: #F6FFF6; }
         .goal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -371,28 +341,58 @@
                 render();
             } catch (error) {
                 console.error("Error al iniciar:", error);
-                localStorage.clear(); // Reset if critical error
+                localStorage.clear();
                 location.reload();
             }
         }
 
+        // --- CORE RECURRENCE LOGIC (AUTO-COPY) ---
+        function checkRecurring() {
+            const currentMonthKey = data.currentMonth; // "2026-02"
+            
+            // 1. Encontrar todas las transacciones que son recurrentes y son de meses pasados
+            const templates = data.transactions.filter(t => t.isRecurring && t.date < (currentMonthKey + '-01'));
+
+            let changes = false;
+            templates.forEach(template => {
+                // 2. Verificar si ya existe una copia en el mes actual (mismo nombre y tipo)
+                const exists = data.transactions.some(t => 
+                    t.date.startsWith(currentMonthKey) && 
+                    t.description === template.description && 
+                    t.type === template.type
+                );
+
+                // 3. Si no existe, crearla
+                if (!exists) {
+                    const newTx = { ...template }; // Copiar datos
+                    newTx.id = Date.now() + Math.random(); // Nuevo ID único
+                    newTx.date = currentMonthKey + '-01'; // Fecha del mes actual
+                    data.transactions.push(newTx);
+                    changes = true;
+                }
+            });
+            
+            if (changes) saveData();
+        }
+
         // --- NAVIGATION ---
         function switchTab(tabName, event) {
-            // Ocultar todo
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Mostrar seleccionado
             const target = document.getElementById(tabName);
             if (target) target.classList.add('active');
             
-            // Activar botón
             if (event && event.currentTarget) {
                 event.currentTarget.classList.add('active');
             }
         }
 
-        function changeMonth(month) { data.currentMonth = month; render(); }
+        function changeMonth(month) { 
+            data.currentMonth = month; 
+            checkRecurring(); // Check for recurring items when changing month
+            render(); 
+        }
 
         // --- DATA HELPERS ---
         function formatCurrency(amount) {
@@ -407,16 +407,16 @@
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
-                    data = { ...data, ...parsed }; // Merge
-                    // Ensure arrays exist
+                    data = { ...data, ...parsed };
                     if(!Array.isArray(data.transactions)) data.transactions = [];
                     if(!Array.isArray(data.goals)) data.goals = [];
                     if(!Array.isArray(data.debts)) data.debts = [];
                     if(!Array.isArray(data.shopping)) data.shopping = [];
                 } catch (e) {
-                    console.error("Datos corruptos, reiniciando", e);
+                    console.error("Datos corruptos", e);
                 }
             }
+            checkRecurring(); // Check on load too
         }
 
         // --- LOGIC ---
@@ -468,7 +468,8 @@
                 const goal = data.goals.find(g => g.id === id);
                 if (goal) {
                     goal.savedAmount += amount;
-                    saveData(); render(); showBearFeedback('happy');
+                    saveData(); render();
+                    showBearFeedback('happy');
                     if (goal.savedAmount >= goal.targetAmount) showCelebration('🎉 ¡Meta Cumplida!');
                 }
             }
@@ -651,7 +652,7 @@
             empty.style.display = hasActive ? 'none' : 'block';
         }
 
-        // --- HELPERS UI ---
+        // --- UI HELPERS ---
         function setIncomeType(btn, type) {
             btn.parentElement.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
