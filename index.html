@@ -14,6 +14,8 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link rel="manifest" href="./manifest.json">
+
     <title>The Money Game 🐻</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
@@ -312,6 +314,17 @@
             color: var(--text);
             transition: border-color 0.2s;
         }
+
+        /* --- CORRECCIÓN PARA EL INPUT DE FECHA EN MÓVIL --- */
+        input[type="date"] {
+            -webkit-appearance: none; /* Quita estilo nativo iOS */
+            appearance: none;
+            min-height: 48px; /* Altura mínima para tocar bien */
+            background-color: #FAFAFA; /* Asegura fondo correcto */
+            display: block; /* Asegura que ocupe el bloque */
+            line-height: 1.2; /* Centrado vertical del texto */
+        }
+        /* -------------------------------------------------- */
 
         input:focus, select:focus {
             outline: none;
@@ -629,7 +642,7 @@
             .stat-value { font-size: 1.2em; }
         }
     </style>
-    <link rel="manifest" href="./manifest.json">
+    
     <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -638,7 +651,7 @@
             console.log('SW registrado! 🐻');
           })
           .catch(error => {
-            console.log('SW falló:', error);
+            console.log('SW no encontrado (es normal si no subiste el archivo):', error);
           });
       });
     }
