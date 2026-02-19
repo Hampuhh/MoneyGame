@@ -2,21 +2,36 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Mi Finanzas">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%237BA8A8' width='180' height='180'/><text x='90' y='120' font-size='80' text-anchor='middle' fill='white'>🐻</text></svg>">
+    <meta name="apple-mobile-web-app-title" content="Money Game">
+    <meta name="theme-color" content="#7BA8A8">
+    <meta name="description" content="Controla tu dinero, alcanza tus metas">
+    <link rel="apple-touch-icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAEgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/2Q==">
     <title>Money Game 🐻</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
         :root {
             --primary: #7BA8A8;
             --primary-light: #D4E8E8;
             --primary-dark: #5A8080;
-            --accent-warm: #F5D4C0;
-            --accent-cool: #C5E8E0;
             --success: #9BC997;
             --warning: #F5D5A8;
             --danger: #F5B8B8;
@@ -25,12 +40,7 @@
             --text: #3D3D3D;
             --text-light: #8B8B7A;
             --border-color: #C9A88A;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --crisis: #E74C3C;
         }
 
         body {
@@ -41,64 +51,43 @@
             background-position: center;
             background-attachment: fixed;
             color: var(--text);
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
         }
 
         .container {
-            max-width: 100%;
-            padding: 16px;
-            padding-bottom: 100px;
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 12px;
+            padding-bottom: 120px;
         }
 
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 20px;
-            padding: 26px 20px 20px 20px;
-            margin-bottom: 20px;
+            border-radius: 16px;
+            padding: 20px 16px;
+            margin-bottom: 16px;
             color: white;
             box-shadow: 0 8px 16px rgba(123, 168, 168, 0.2);
             position: relative;
             border: 3px solid var(--border-color);
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
             overflow: hidden;
         }
 
         header::before {
             content: '🐻 🐻 🐻';
             position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 2em;
+            top: 8px;
+            left: 16px;
+            font-size: 1.8em;
             opacity: 0.1;
             z-index: 1;
-        }
-
-        header::after {
-            content: '🐻 🐻';
-            position: absolute;
-            bottom: 20px;
-            right: 30px;
-            font-size: 1.8em;
-            opacity: 0.08;
-            z-index: 1;
-        }
-
-        .bear-emoji {
-            font-size: 4.2em;
-            position: absolute;
-            left: 20px;
-            top: 55px;
-            opacity: 0.9;
-            animation: float 2s ease-in-out infinite;
-            z-index: 2;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
         }
 
         .header-top {
@@ -107,24 +96,19 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .header-title-block {
-            margin-left: 90px;
+            gap: 12px;
         }
 
         header h1 {
-            font-size: 2.4em;
-            margin-bottom: 4px;
+            font-size: 2em;
             font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
         }
 
         header p {
             opacity: 0.95;
-            font-size: 0.95em;
+            font-size: 0.9em;
         }
 
         .currency-selector {
@@ -133,7 +117,7 @@
             border-radius: 8px;
             padding: 6px 10px;
             color: white;
-            font-size: 0.85em;
+            font-size: 0.8em;
             font-weight: 700;
             cursor: pointer;
             font-family: 'Poppins';
@@ -141,18 +125,19 @@
 
         .month-selector {
             background: var(--surface);
-            padding: 12px 16px;
-            border-radius: 15px;
-            margin-bottom: 16px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-bottom: 12px;
             display: flex;
             gap: 8px;
             align-items: center;
-            border: 3px solid var(--border-color);
+            border: 2px solid var(--border-color);
         }
 
         .month-selector label {
             font-weight: 700;
             color: var(--primary);
+            font-size: 0.9em;
         }
 
         .month-selector input {
@@ -160,30 +145,32 @@
             border: none;
             background: var(--primary-light);
             padding: 8px 12px;
-            border-radius: 10px;
+            border-radius: 8px;
             font-family: 'Poppins';
             color: var(--primary-dark);
+            font-size: 0.95em;
         }
 
         .tabs {
             display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
+            gap: 6px;
+            margin-bottom: 14px;
             overflow-x: auto;
-            border-radius: 15px;
+            border-radius: 12px;
             background: var(--surface);
             padding: 4px;
-            border: 3px solid var(--border-color);
+            border: 2px solid var(--border-color);
+            -webkit-overflow-scrolling: touch;
         }
 
         .tab-btn {
-            padding: 10px 14px;
+            padding: 8px 12px;
             border: none;
             background: transparent;
             cursor: pointer;
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: var(--text-light);
-            border-radius: 10px;
+            border-radius: 8px;
             transition: all 0.3s;
             font-family: 'Poppins';
             font-weight: 700;
@@ -212,44 +199,57 @@
         .card-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 10px;
+            margin-bottom: 14px;
         }
 
         .stat-card {
             background: #FFFFFF;
-            border-radius: 15px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 14px;
             border: 2px solid var(--border-color);
             text-align: center;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
         }
 
         .stat-card.income {
             border-color: rgba(155, 201, 151, 0.8);
-            background: #FFFFFF;
         }
 
         .stat-card.expense {
             border-color: rgba(245, 184, 184, 0.8);
-            background: #FFFFFF;
         }
 
         .stat-card.savings {
             border-color: rgba(197, 232, 224, 0.8);
-            background: #FFFFFF;
+        }
+
+        .stat-card.available {
+            border-color: rgba(123, 168, 168, 0.8);
+            position: relative;
+        }
+
+        .stat-card.crisis {
+            border-color: var(--crisis);
+            background: rgba(231, 76, 60, 0.05);
+            animation: pulse-crisis 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-crisis {
+            0%, 100% { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); }
+            50% { box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3); }
         }
 
         .stat-label {
             color: var(--text-light);
-            font-size: 0.8em;
-            margin-bottom: 6px;
+            font-size: 0.75em;
+            margin-bottom: 4px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .stat-value {
-            font-size: 1.8em;
+            font-size: 1.5em;
             font-weight: 900;
             color: var(--primary);
         }
@@ -266,27 +266,53 @@
             color: var(--primary);
         }
 
+        .stat-card.available .stat-value {
+            color: var(--primary);
+        }
+
+        .stat-card.crisis .stat-value {
+            color: var(--crisis);
+        }
+
+        .crisis-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--crisis);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.65em;
+            font-weight: 700;
+            animation: bounce 0.8s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
         h2 {
-            font-size: 1.3em;
-            margin: 20px 0 12px 0;
+            font-size: 1.1em;
+            margin: 16px 0 10px 0;
             color: var(--primary);
         }
 
         .form-card {
             background: var(--surface);
-            border-radius: 15px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 14px;
             border: 2px solid var(--border-color);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .form-group {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         label {
             display: block;
-            font-size: 0.85em;
+            font-size: 0.8em;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 4px;
@@ -294,9 +320,9 @@
 
         input, select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 10px;
             border: 2px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 8px;
             font-family: 'Poppins';
             font-size: 1em;
             background: var(--bg);
@@ -315,9 +341,9 @@
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             font-family: 'Poppins';
-            font-size: 1em;
+            font-size: 0.95em;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
@@ -336,7 +362,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .type-btn {
@@ -346,6 +372,7 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 700;
+            font-size: 0.85em;
             transition: all 0.3s;
             font-family: 'Poppins';
         }
@@ -360,10 +387,11 @@
             width: 100%;
             border-collapse: collapse;
             background: var(--surface);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             border: 2px solid var(--border-color);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
+            font-size: 0.9em;
         }
 
         th {
@@ -372,13 +400,13 @@
             text-align: left;
             font-weight: 700;
             color: var(--primary);
-            font-size: 0.85em;
+            font-size: 0.8em;
         }
 
         td {
             padding: 10px;
             border-bottom: 1px solid var(--border-color);
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
         tr:last-child td {
@@ -387,20 +415,20 @@
 
         .empty-state {
             text-align: center;
-            padding: 30px 16px;
+            padding: 24px 16px;
             color: var(--text-light);
         }
 
         .empty-state-emoji {
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 8px;
         }
 
         .progress-bar {
             width: 100%;
-            height: 10px;
+            height: 8px;
             background: var(--primary-light);
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             margin: 8px 0;
         }
@@ -414,10 +442,10 @@
 
         .goal-card {
             background: var(--surface);
-            border-radius: 15px;
-            padding: 16px;
+            border-radius: 12px;
+            padding: 14px;
             border: 2px solid var(--border-color);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .goal-card.completed {
@@ -433,7 +461,7 @@
         }
 
         .goal-name {
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: 700;
             color: var(--primary);
         }
@@ -441,6 +469,7 @@
         .goal-status {
             font-size: 0.8em;
             color: var(--text-light);
+            font-weight: 700;
         }
 
         .goal-amounts {
@@ -455,18 +484,18 @@
             background: var(--primary-light);
             padding: 8px;
             border-radius: 8px;
-            font-size: 0.85em;
+            font-size: 0.8em;
         }
 
         .goal-amount-label {
             color: var(--text-light);
-            font-size: 0.75em;
+            font-size: 0.7em;
         }
 
         .goal-amount-value {
             font-weight: 700;
             color: var(--primary);
-            font-size: 1.1em;
+            font-size: 1em;
             margin-top: 2px;
         }
 
@@ -478,8 +507,8 @@
         }
 
         .btn-small {
-            padding: 8px 12px;
-            font-size: 0.8em;
+            padding: 8px 10px;
+            font-size: 0.75em;
         }
 
         @keyframes confetti-fall {
@@ -516,9 +545,9 @@
         .celebration-message {
             background: linear-gradient(135deg, #9BC997 0%, #7BA8A8 100%);
             color: white;
-            padding: 30px 40px;
-            border-radius: 20px;
-            font-size: 1.8em;
+            padding: 24px 32px;
+            border-radius: 16px;
+            font-size: 1.6em;
             font-weight: 700;
             text-align: center;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
@@ -540,30 +569,44 @@
         }
 
         @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                padding-bottom: 110px;
+            }
+
             header {
-                min-height: 170px;
-            }
-
-            .bear-emoji {
-                font-size: 3.2em;
-                top: 58px;
-                left: 16px;
-            }
-
-            .header-title-block {
-                margin-left: 80px;
+                padding: 16px 12px;
+                margin-bottom: 12px;
+                border-radius: 14px;
             }
 
             header h1 {
-                font-size: 1.9em;
+                font-size: 1.6em;
             }
 
             .card-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 12px;
             }
 
             .stat-value {
-                font-size: 1.4em;
+                font-size: 1.3em;
+            }
+
+            input, select, button {
+                font-size: 16px;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            td, th {
+                padding: 8px;
             }
         }
     </style>
@@ -571,9 +614,8 @@
 <body>
     <div class="container">
         <header>
-            <div class="bear-emoji">🐻</div>
             <div class="header-top">
-                <div class="header-title-block">
+                <div>
                     <h1>Money Game</h1>
                     <p>There's no try, just do ✨</p>
                 </div>
@@ -585,7 +627,7 @@
         </header>
 
         <div class="month-selector">
-            <label for="monthInput">📅 Mes:</label>
+            <label for="monthInput">📅</label>
             <input type="month" id="monthInput" onchange="changeMonth(this.value)">
         </div>
 
@@ -610,9 +652,18 @@
                     <div class="stat-label">Ahorros</div>
                     <div class="stat-value" id="totalSavings">$0</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-label">% Ahorrado</div>
-                    <div class="stat-value" id="savingsPercent">0%</div>
+                <div class="stat-card available" id="availableCard">
+                    <div class="stat-label">Disponible</div>
+                    <div class="stat-value" id="totalAvailable">$0</div>
+                </div>
+            </div>
+
+            <div id="crisisAlert" style="display: none;">
+                <div class="stat-card crisis">
+                    <div class="crisis-badge">⚠️ ALERTA</div>
+                    <div class="stat-label">¡PELIGRO!</div>
+                    <div class="stat-value" style="font-size: 1.3em;">Apunto de Crisis Financiera</div>
+                    <p style="font-size: 0.8em; color: var(--crisis); margin-top: 8px;">Te quedan menos del 25% de tu ingreso. ¡Reduce gastos!</p>
                 </div>
             </div>
 
@@ -740,6 +791,7 @@
         let data = {
             currency: 'CLP',
             currentMonth: new Date().toISOString().slice(0, 7),
+            incomeDate: null,
             income: {},
             expenses: {},
             goals: {},
@@ -798,7 +850,11 @@
 
             if (!description || !amount) return alert('Completa los campos');
 
-            if (!data.income[data.currentMonth]) data.income[data.currentMonth] = [];
+            if (!data.income[data.currentMonth]) {
+                data.income[data.currentMonth] = [];
+                data.incomeDate = new Date().getDate();
+            }
+
             data.income[data.currentMonth].push({ description, amount, type });
 
             document.getElementById('incomeDescription').value = '';
@@ -886,6 +942,19 @@
             setTimeout(() => overlay.remove(), 3000);
         }
 
+        function checkCrisis() {
+            const { income, expenses } = calculateTotals();
+            const available = income - expenses;
+            const percentAvailable = income > 0 ? (available / income) * 100 : 100;
+            
+            const incomeDay = data.incomeDate || new Date().getDate();
+            const today = new Date().getDate();
+            const daysSinceIncome = today >= incomeDay ? today - incomeDay : 30 - incomeDay + today;
+
+            const isCrisis = percentAvailable < 25 && daysSinceIncome < 15;
+            return isCrisis;
+        }
+
         function addToGoal(goalId) {
             const amount = parseFloat(prompt('¿Cuánto deseas ahorrar para esta meta?'));
             if (amount && amount > 0) {
@@ -925,11 +994,23 @@
 
         function render() {
             const { income, expenses, savings } = calculateTotals();
+            const available = income - expenses;
 
             document.getElementById('totalIncome').textContent = formatCurrency(income);
             document.getElementById('totalExpense').textContent = formatCurrency(expenses);
             document.getElementById('totalSavings').textContent = formatCurrency(savings);
-            document.getElementById('savingsPercent').textContent = income > 0 ? ((savings / income) * 100).toFixed(0) + '%' : '0%';
+            document.getElementById('totalAvailable').textContent = formatCurrency(available);
+
+            const availableCard = document.getElementById('availableCard');
+            const crisisAlert = document.getElementById('crisisAlert');
+
+            if (checkCrisis()) {
+                availableCard.classList.add('crisis');
+                crisisAlert.style.display = 'block';
+            } else {
+                availableCard.classList.remove('crisis');
+                crisisAlert.style.display = 'none';
+            }
 
             renderIncome();
             renderExpenses();
@@ -955,7 +1036,7 @@
                 const row = `<tr>
                     <td>${item.description}</td>
                     <td>${formatCurrency(item.amount)}</td>
-                    <td>${item.type === 'once' ? '📅 Una vez' : '🔄 Recurrente'}</td>
+                    <td>${item.type === 'once' ? '📅' : '🔄'}</td>
                     <td><button class="btn-small" onclick="deleteIncome(${idx})">🗑️</button></td>
                 </tr>`;
                 tbody.innerHTML += row;
@@ -982,7 +1063,7 @@
                     <td>${item.category}</td>
                     <td>${item.description}</td>
                     <td>${formatCurrency(item.amount)}</td>
-                    <td>${item.type === 'once' ? '📅 Una vez' : '🔄 Recurrente'}</td>
+                    <td>${item.type === 'once' ? '📅' : '🔄'}</td>
                     <td><button class="btn-small" onclick="deleteExpense(${idx})">🗑️</button></td>
                 </tr>`;
                 tbody.innerHTML += row;
