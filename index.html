@@ -12,6 +12,8 @@
     <link rel="apple-touch-icon" href="./icon.png">
     <link rel="icon" type="image/png" href="./icon.png">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <title>The Money Game 🐻</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
@@ -50,7 +52,6 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg);
-            /* FONDO DE LA APP */
             background-image: url('./fondo.png');
             background-size: cover;
             background-position: center;
@@ -73,7 +74,7 @@
             padding-bottom: 120px;
         }
 
-        /* --- HEADER (Usa banner.png que puede ser rectangular) --- */
+        /* --- HEADER --- */
         header {
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./banner.png');
             background-size: cover;
@@ -106,14 +107,14 @@
             text-shadow: 0px 1px 2px rgba(0,0,0,0.6);
         }
 
-        /* --- RESTO DEL CSS --- */
+        /* --- INTERFAZ GENERAL --- */
         .month-selector {
             background: rgba(255, 255, 255, 0.95);
             padding: 10px 14px;
             border-radius: 12px;
             margin-bottom: 12px;
             display: flex;
-            gap: 8px;
+            gap: 12px;
             align-items: center;
             border: 2px solid var(--border-color);
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
@@ -150,7 +151,7 @@
         .tabs::-webkit-scrollbar { display: none; }
 
         .tab-btn {
-            padding: 10px 16px;
+            padding: 12px 16px;
             border: none;
             background: rgba(255, 255, 255, 0.85);
             cursor: pointer;
@@ -163,6 +164,9 @@
             white-space: nowrap;
             border: 1px solid transparent;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .tab-btn.active {
@@ -267,8 +271,13 @@
             color: var(--primary-dark);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+        }
+
+        h2 i {
+            color: var(--primary);
+            font-size: 0.9em;
         }
 
         .form-card {
@@ -398,6 +407,73 @@
             color: #D65A5A;
         }
 
+        /* ESTILOS DE DEUDAS */
+        .debt-card {
+            background: white;
+            border-radius: 14px;
+            padding: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #ccc;
+            position: relative;
+        }
+
+        .debt-card.owe { border-left-color: var(--danger); } /* Yo debo */
+        .debt-card.owed { border-left-color: var(--success); } /* Me deben */
+        
+        .debt-card.paid { 
+            opacity: 0.6; 
+            border-left-color: #ccc;
+            background: #f9f9f9;
+        }
+        
+        .debt-card.paid .debt-info { text-decoration: line-through; }
+
+        .debt-card.overdue {
+            border: 2px solid var(--danger);
+            background: #FFF5F5;
+        }
+
+        .overdue-badge {
+            position: absolute;
+            top: -8px;
+            right: 10px;
+            background: var(--danger);
+            color: white;
+            font-size: 0.6em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .debt-info h4 { margin: 0; font-size: 1em; color: var(--text); }
+        .debt-info p { margin: 0; font-size: 0.75em; color: var(--text-light); }
+        
+        .debt-amount { font-weight: 800; font-size: 1.1em; }
+        .owe .debt-amount { color: var(--danger); }
+        .owed .debt-amount { color: var(--success); }
+
+        .debt-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-check {
+            background: var(--success);
+            color: white;
+            padding: 6px;
+            border-radius: 50%;
+            width: 30px; 
+            height: 30px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+
+        /* --- OTRAS CLASES --- */
         .empty-state {
             text-align: center;
             padding: 40px 16px;
@@ -407,10 +483,11 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        .empty-state-emoji {
+        .empty-state-icon {
             font-size: 3em;
             margin-bottom: 12px;
-            opacity: 0.8;
+            opacity: 0.6;
+            color: var(--primary);
         }
 
         .progress-bar {
@@ -558,20 +635,31 @@
         <header>
             <div class="header-text">
                 <h1>The Money Game</h1>
-                <p>Just do it ✨</p>
+                <p>Just do it <i class="fas fa-star" style="color:#FFD700;"></i></p>
             </div>
         </header>
 
         <div class="month-selector">
-            <label for="monthInput">📅</label>
+            <label for="monthInput"><i class="far fa-calendar-alt"></i></label>
             <input type="month" id="monthInput" onchange="changeMonth(this.value)">
         </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('dashboard', event)">📊 Dashboard</button>
-            <button class="tab-btn" onclick="switchTab('income', event)">💰 Ingresos</button>
-            <button class="tab-btn" onclick="switchTab('expenses', event)">💸 Gastos</button>
-            <button class="tab-btn" onclick="switchTab('goals', event)">🎯 Metas</button>
+            <button class="tab-btn active" onclick="switchTab('dashboard', event)">
+                <i class="fas fa-chart-pie"></i> Resumen
+            </button>
+            <button class="tab-btn" onclick="switchTab('income', event)">
+                <i class="fas fa-wallet"></i> Ingresos
+            </button>
+            <button class="tab-btn" onclick="switchTab('expenses', event)">
+                <i class="fas fa-money-bill-wave"></i> Gastos
+            </button>
+            <button class="tab-btn" onclick="switchTab('debts', event)">
+                <i class="fas fa-hand-holding-usd"></i> Deudas
+            </button>
+            <button class="tab-btn" onclick="switchTab('goals', event)">
+                <i class="fas fa-bullseye"></i> Metas
+            </button>
         </div>
 
         <div id="dashboard" class="tab-content active">
@@ -596,14 +684,14 @@
 
             <div id="crisisAlert" style="display: none;">
                 <div class="stat-card crisis">
-                    <div class="crisis-badge">⚠️ ALERTA</div>
+                    <div class="crisis-badge"><i class="fas fa-exclamation-triangle"></i> ALERTA</div>
                     <div class="stat-label">¡CUIDADO!</div>
                     <div class="stat-value" style="font-size: 1.2em;">Bajos Fondos</div>
                     <p style="font-size: 0.85em; color: var(--crisis); margin-top: 8px; line-height: 1.4;">Te queda menos del 20% de tu dinero disponible.</p>
                 </div>
             </div>
 
-            <h2>🏆 Progreso de Metas</h2>
+            <h2><i class="fas fa-trophy"></i> Progreso de Metas</h2>
             <div id="goalsProgress"></div>
             <div id="goalsProgressEmpty" class="empty-state" style="display:none; padding: 20px;">
                 <p>No tienes metas activas aún.</p>
@@ -612,7 +700,7 @@
 
         <div id="income" class="tab-content">
             <div class="form-card">
-                <h2>➕ Nuevo Ingreso</h2>
+                <h2><i class="fas fa-plus-circle"></i> Nuevo Ingreso</h2>
                 <div class="form-group">
                     <label>Descripción</label>
                     <input type="text" id="incomeDescription" placeholder="Ej: Sueldo, Venta...">
@@ -629,7 +717,7 @@
                     </div>
                     <input type="hidden" id="incomeType" value="once">
                 </div>
-                <button onclick="addIncome()">Guardar Ingreso ✨</button>
+                <button onclick="addIncome()">Guardar Ingreso <i class="fas fa-check"></i></button>
             </div>
 
             <h2>Historial del Mes</h2>
@@ -644,14 +732,14 @@
                 <tbody id="incomeBody"></tbody>
             </table>
             <div id="incomeEmpty" class="empty-state">
-                <div class="empty-state-emoji">🍃</div>
+                <div class="empty-state-icon"><i class="fas fa-leaf"></i></div>
                 <p>Nada por aquí aún.</p>
             </div>
         </div>
 
         <div id="expenses" class="tab-content">
             <div class="form-card">
-                <h2>➖ Nuevo Gasto</h2>
+                <h2><i class="fas fa-minus-circle"></i> Nuevo Gasto</h2>
                 <div class="form-group">
                     <label>¿En qué gastaste?</label>
                     <input type="text" id="expenseDescription" placeholder="Ej: Supermercado...">
@@ -680,7 +768,7 @@
                     </div>
                     <input type="hidden" id="expenseType" value="once">
                 </div>
-                <button onclick="addExpense()" style="background-color: var(--danger);">Registrar Gasto 💸</button>
+                <button onclick="addExpense()" style="background-color: var(--danger);">Registrar Gasto <i class="fas fa-arrow-right"></i></button>
             </div>
 
             <h2>Gastos del Mes</h2>
@@ -695,14 +783,47 @@
                 <tbody id="expenseBody"></tbody>
             </table>
             <div id="expenseEmpty" class="empty-state">
-                <div class="empty-state-emoji">✨</div>
+                <div class="empty-state-icon"><i class="fas fa-magic"></i></div>
                 <p>¡Todo limpio! Sin gastos.</p>
+            </div>
+        </div>
+
+        <div id="debts" class="tab-content">
+            <div class="form-card">
+                <h2><i class="fas fa-handshake"></i> Registro de Deudas</h2>
+                <div class="form-group">
+                    <div class="expense-type-selector">
+                        <button class="type-btn active" onclick="setDebtType(this, 'owed')">Me deben 🤑</button>
+                        <button class="type-btn" onclick="setDebtType(this, 'owe')">Yo debo 😓</button>
+                    </div>
+                    <input type="hidden" id="debtType" value="owed">
+                </div>
+                <div class="form-group">
+                    <label>Persona</label>
+                    <input type="text" id="debtPerson" placeholder="Nombre...">
+                </div>
+                <div class="form-group">
+                    <label>Monto</label>
+                    <input type="number" id="debtAmount" placeholder="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>Fecha del préstamo</label>
+                    <input type="date" id="debtDate">
+                </div>
+                <button onclick="addDebt()">Guardar Deuda <i class="fas fa-save"></i></button>
+            </div>
+
+            <h2>Pendientes</h2>
+            <div id="debtsContainer"></div>
+            <div id="debtsEmpty" class="empty-state">
+                <div class="empty-state-icon"><i class="fas fa-peace"></i></div>
+                <p>Sin deudas pendientes.</p>
             </div>
         </div>
 
         <div id="goals" class="tab-content">
             <div class="form-card">
-                <h2>🎯 Crear Meta</h2>
+                <h2><i class="fas fa-crosshairs"></i> Crear Meta</h2>
                 <div class="form-group">
                     <label>Nombre de la Meta</label>
                     <input type="text" id="goalName" placeholder="Ej: PC Gamer, Viaje...">
@@ -711,13 +832,13 @@
                     <label>Monto a juntar</label>
                     <input type="number" id="goalAmount" placeholder="0" min="0">
                 </div>
-                <button onclick="addGoal()">Comenzar Meta 🚀</button>
+                <button onclick="addGoal()">Comenzar Meta <i class="fas fa-rocket"></i></button>
             </div>
 
             <h2>Mis Objetivos</h2>
             <div id="goalsContainer"></div>
             <div id="goalsEmpty" class="empty-state">
-                <div class="empty-state-emoji">🏔️</div>
+                <div class="empty-state-icon"><i class="fas fa-mountain"></i></div>
                 <p>Define una meta para empezar.</p>
             </div>
         </div>
@@ -731,7 +852,8 @@
             income: {},
             expenses: {},
             goals: {},
-            goalsHistory: {}
+            goalsHistory: {},
+            debts: [] // Nuevo array para deudas
         };
 
         const currencySymbols = { 'CLP': '$', 'USD': '$' };
@@ -739,6 +861,8 @@
 
         function initApp() {
             document.getElementById('monthInput').value = data.currentMonth;
+            // Set default date for debts to today
+            document.getElementById('debtDate').valueAsDate = new Date();
             loadData();
             render();
         }
@@ -774,8 +898,13 @@
             document.getElementById('expenseType').value = type;
         }
 
+        function setDebtType(btn, type) {
+            btn.parentElement.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('debtType').value = type;
+        }
+
         function formatCurrency(amount) {
-            // Formato CLP directo
             return '$' + amount.toLocaleString('es-CL', { maximumFractionDigits: 0 });
         }
 
@@ -833,6 +962,49 @@
             render();
         }
 
+        function addDebt() {
+            const person = document.getElementById('debtPerson').value;
+            const amount = parseFloat(document.getElementById('debtAmount').value);
+            const date = document.getElementById('debtDate').value;
+            const type = document.getElementById('debtType').value;
+
+            if (!person || !amount || !date) return alert('Completa todos los campos 🙏');
+
+            if (!data.debts) data.debts = [];
+            
+            data.debts.push({
+                id: Date.now(),
+                person,
+                amount,
+                date,
+                type,
+                status: 'pending' // 'pending' or 'paid'
+            });
+
+            document.getElementById('debtPerson').value = '';
+            document.getElementById('debtAmount').value = '';
+            saveData();
+            render();
+        }
+
+        function toggleDebtStatus(id) {
+            const debt = data.debts.find(d => d.id === id);
+            if (debt) {
+                debt.status = debt.status === 'pending' ? 'paid' : 'pending';
+                saveData();
+                render();
+                if(debt.status === 'paid') showCelebration('¡Deuda Saldada! 💸');
+            }
+        }
+
+        function deleteDebt(id) {
+            if(confirm('¿Borrar este registro?')) {
+                data.debts = data.debts.filter(d => d.id !== id);
+                saveData();
+                render();
+            }
+        }
+
         function deleteIncome(index) {
             if(confirm('¿Borrar este ingreso?')) {
                 data.income[data.currentMonth].splice(index, 1);
@@ -863,10 +1035,11 @@
             for (let i = 0; i < 60; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
-                confetti.textContent = ['🐻', '💰', '✨', '🎉'][Math.floor(Math.random() * 4)];
+                confetti.textContent = ['★', '●', '✦', '■'][Math.floor(Math.random() * 4)];
                 confetti.style.left = Math.random() * window.innerWidth + 'px';
                 confetti.style.top = '-20px';
                 confetti.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
                 document.body.appendChild(confetti);
                 setTimeout(() => confetti.remove(), 3000);
             }
@@ -954,6 +1127,7 @@
             renderExpenses();
             renderGoals();
             renderGoalsProgress();
+            renderDebts();
         }
 
         function renderIncome() {
@@ -970,10 +1144,11 @@
                 document.getElementById('incomeTable').style.display = 'table';
                 items.forEach((item, idx) => {
                     const isRecurring = item.type === 'recurring';
+                    const icon = isRecurring ? '<i class="fas fa-sync-alt" title="Mensual"></i>' : '<i class="far fa-calendar" title="Único"></i>';
                     const row = `<tr>
-                        <td><b>${item.description}</b><br><span style="font-size:0.8em; color:#999">${isRecurring ? '🔄 Mensual' : '📅 Único'}</span></td>
+                        <td><b>${item.description}</b><br><span style="font-size:0.8em; color:#999">${icon} ${isRecurring ? 'Mensual' : 'Único'}</span></td>
                         <td style="color:var(--success); font-weight:700;">+${formatCurrency(item.amount)}</td>
-                        <td style="text-align:right;"><button class="btn-small" onclick="deleteIncome(${idx})">✕</button></td>
+                        <td style="text-align:right;"><button class="btn-small" onclick="deleteIncome(${idx})"><i class="fas fa-times"></i></button></td>
                     </tr>`;
                     tbody.innerHTML += row;
                 });
@@ -994,12 +1169,57 @@
                 document.getElementById('expenseTable').style.display = 'table';
                 items.forEach((item, idx) => {
                     const isRecurring = item.type === 'recurring';
+                    const icon = isRecurring ? '<i class="fas fa-sync-alt"></i>' : '';
                     const row = `<tr>
-                        <td><b>${item.description}</b><br><span style="font-size:0.8em; color:#999">${item.category} ${isRecurring ? '• 🔄' : ''}</span></td>
+                        <td><b>${item.description}</b><br><span style="font-size:0.8em; color:#999">${item.category} ${icon}</span></td>
                         <td style="color:var(--danger); font-weight:700;">-${formatCurrency(item.amount)}</td>
-                        <td style="text-align:right;"><button class="btn-small" onclick="deleteExpense(${idx})">✕</button></td>
+                        <td style="text-align:right;"><button class="btn-small" onclick="deleteExpense(${idx})"><i class="fas fa-times"></i></button></td>
                     </tr>`;
                     tbody.innerHTML += row;
+                });
+            }
+        }
+
+        function renderDebts() {
+            const container = document.getElementById('debtsContainer');
+            const empty = document.getElementById('debtsEmpty');
+            container.innerHTML = '';
+            
+            const debts = data.debts || [];
+
+            if (debts.length === 0) {
+                empty.style.display = 'block';
+            } else {
+                empty.style.display = 'none';
+                const today = new Date();
+
+                debts.forEach(debt => {
+                    const debtDate = new Date(debt.date);
+                    const diffTime = Math.abs(today - debtDate);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                    const isOverdue = diffDays > 10 && debt.status === 'pending';
+                    
+                    const card = document.createElement('div');
+                    card.className = `debt-card ${debt.type} ${debt.status} ${isOverdue ? 'overdue' : ''}`;
+                    
+                    const typeLabel = debt.type === 'owed' ? 'Me deben' : 'Yo debo';
+                    const dateStr = debtDate.toLocaleDateString('es-CL');
+
+                    card.innerHTML = `
+                        ${isOverdue ? '<span class="overdue-badge">¡VENCIDO!</span>' : ''}
+                        <div class="debt-info">
+                            <h4>${debt.person}</h4>
+                            <p>${typeLabel} • ${dateStr}</p>
+                            <div class="debt-amount">${formatCurrency(debt.amount)}</div>
+                        </div>
+                        <div class="debt-actions">
+                            <button class="btn-check" onclick="toggleDebtStatus(${debt.id})">
+                                ${debt.status === 'paid' ? '<i class="fas fa-undo"></i>' : '<i class="fas fa-check"></i>'}
+                            </button>
+                            <button class="btn-small" onclick="deleteDebt(${debt.id})"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                    container.appendChild(card);
                 });
             }
         }
@@ -1037,8 +1257,8 @@
                             </div>
                         </div>
                         <div class="goal-buttons">
-                            <button onclick="addToGoal('${id}')">Ahorrar 💰</button>
-                            <button class="danger btn-small" onclick="deleteGoal('${id}')">🗑️</button>
+                            <button onclick="addToGoal('${id}')">Ahorrar <i class="fas fa-piggy-bank"></i></button>
+                            <button class="danger btn-small" onclick="deleteGoal('${id}')"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>`;
                     container.innerHTML += card;
