@@ -5,21 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="The Money Game">
+    <meta name="apple-mobile-web-app-title" content="Money Game">
     <meta name="theme-color" content="#7BA8A8">
-    
-    <link rel="apple-touch-icon" href="./icon.png">
-    <link rel="icon" type="image/png" href="./icon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Controla tu dinero, alcanza tus metas">
     <link rel="manifest" href="./manifest.json">
-
-    <title>The Money Game 🐻</title>
+    <link rel="apple-touch-icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABIAEgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlbaWmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/2Q==">
+    <title>Money Game 🐻</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
-        html, body { width: 100%; height: 100%; overflow: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
 
         :root {
             --primary: #7BA8A8;
@@ -39,193 +47,618 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg);
-            background-image: url('./fondo.png');
+            background-image: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/9ca668e1-5d2f-4870-976a-6da03921928e');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--text);
-            display: flex; flex-direction: column; height: 100vh;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
             padding-top: env(safe-area-inset-top);
             padding-bottom: env(safe-area-inset-bottom);
             padding-left: env(safe-area-inset-left);
             padding-right: env(safe-area-inset-right);
         }
 
-        .container { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 12px; padding-bottom: 120px; }
-
-        /* HEADER */
-        header {
-            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./banner.png');
-            background-size: cover; background-position: center;
-            border-radius: 24px; padding: 40px 20px; margin-bottom: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0, 0.15); border: 2px solid rgba(255,255,255,0.6);
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        .container {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 12px;
+            padding-bottom: 120px;
         }
-        .header-text h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; color: #FFFFFF; line-height: 1; margin-bottom: 5px; text-shadow: 0px 2px 4px rgba(0,0,0,0.6); }
-        .header-text p { font-size: 0.9em; color: rgba(255, 255, 255, 0.9); font-weight: 600; text-shadow: 0px 1px 2px rgba(0,0,0,0.6); }
 
-        /* UI ELEMENTS */
-        .month-selector { background: rgba(255, 255, 255, 0.95); padding: 10px 14px; border-radius: 12px; margin-bottom: 12px; display: flex; gap: 12px; align-items: center; border: 2px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.03); backdrop-filter: blur(5px); }
-        .month-selector label { font-weight: 700; color: var(--primary); font-size: 1.2em; }
-        .month-selector input { flex: 1; border: none; background: transparent; padding: 8px; font-family: 'Poppins'; color: var(--text); font-size: 1em; font-weight: 600; }
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 16px;
+            padding: 20px 16px;
+            margin-bottom: 16px;
+            color: white;
+            box-shadow: 0 8px 16px rgba(123, 168, 168, 0.2);
+            position: relative;
+            border: 3px solid var(--border-color);
+            overflow: hidden;
+        }
 
-        /* TABS FIXED */
-        .tabs { display: flex; gap: 10px; margin-bottom: 18px; overflow-x: auto; border-radius: 16px; padding: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-        .tabs::-webkit-scrollbar { display: none; }
-        .tab-btn { padding: 10px 16px; border: none; background: rgba(255, 255, 255, 0.90); cursor: pointer; font-size: 0.85em; color: var(--text); border-radius: 12px; transition: all 0.2s; font-family: 'Poppins'; font-weight: 700; white-space: nowrap; border: 1px solid transparent; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-        .tab-btn.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(123, 168, 168, 0.4); transform: translateY(-1px); }
+        header::before {
+            content: '🐻 🐻 🐻';
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            font-size: 1.8em;
+            opacity: 0.1;
+            z-index: 1;
+        }
 
-        .tab-content { display: none; animation: slideIn 0.3s ease; }
-        .tab-content.active { display: block; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .header-top {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
 
-        /* FORMS & INPUTS */
-        .form-card { background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 16px; border: 1px solid rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 14px; }
-        label { display: block; font-size: 0.85em; font-weight: 700; color: var(--text-light); margin-bottom: 6px; }
-        input, select { width: 100%; padding: 12px; border: 2px solid var(--primary-light); border-radius: 12px; font-family: 'Poppins'; font-size: 1em; background: #FAFAFA; color: var(--text); transition: border-color 0.2s; }
-        input[type="date"] { -webkit-appearance: none; appearance: none; min-height: 48px; background-color: #FAFAFA; display: block; line-height: 1.2; }
-        input:focus, select:focus { outline: none; border-color: var(--primary); background: white; }
-        button { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 12px; font-family: 'Poppins'; font-size: 1em; font-weight: 700; cursor: pointer; transition: transform 0.1s, background 0.2s; box-shadow: 0 4px 10px rgba(123, 168, 168, 0.3); }
-        button:active { transform: scale(0.96); }
-        button.danger { background: var(--danger); box-shadow: 0 4px 10px rgba(245, 184, 184, 0.4); }
-        
-        .expense-type-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-        .type-btn { padding: 12px; border: 2px solid transparent; background: #F0F4F4; color: var(--text-light); border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.9em; box-shadow: none; }
-        .type-btn.active { background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(123, 168, 168, 0.2); }
+        header h1 {
+            font-size: 2em;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
 
-        /* LISTS & TABLES */
-        table { width: 100%; border-collapse: separate; border-spacing: 0 8px; margin-bottom: 14px; font-size: 0.9em; }
-        th { padding: 0 10px; text-align: left; font-weight: 700; color: var(--text-light); font-size: 0.75em; text-transform: uppercase; background: rgba(255,255,255,0.5); border-radius: 4px; }
-        td { padding: 12px 10px; background: rgba(255, 255, 255, 0.95); font-size: 0.9em; border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03); }
-        td:first-child { border-radius: 10px 0 0 10px; border-left: 1px solid rgba(0,0,0,0.03); }
-        td:last-child { border-radius: 0 10px 10px 0; border-right: 1px solid rgba(0,0,0,0.03); text-align: right; }
-        .btn-small { padding: 6px 10px; font-size: 0.8em; width: auto; box-shadow: none; background: #FFE0E0; color: #D65A5A; }
+        header p {
+            opacity: 0.95;
+            font-size: 0.9em;
+        }
 
-        /* STAT CARDS */
-        .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
-        .stat-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); border-radius: 16px; padding: 16px; border: none; text-align: center; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06); position: relative; overflow: hidden; }
-        .stat-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
-        .stat-card.income::after { background: var(--success); }
-        .stat-card.expense::after { background: var(--danger); }
-        .stat-card.savings::after { background: var(--warning); }
-        .stat-card.available::after { background: var(--primary); }
-        .stat-card.crisis { border: 2px solid var(--crisis); background: #FFF5F5; animation: pulse-crisis 1.5s ease-in-out infinite; }
-        @keyframes pulse-crisis { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
-        .stat-label { color: var(--text-light); font-size: 0.75em; margin-bottom: 6px; text-transform: uppercase; font-weight: 600; }
-        .stat-value { font-size: 1.4em; font-weight: 800; color: var(--text); }
-        .stat-card.income .stat-value { color: var(--success); }
-        .stat-card.expense .stat-value { color: var(--danger); }
-        .stat-card.savings .stat-value { color: #E6B328; }
-        .stat-card.available .stat-value { color: var(--primary-dark); }
-        .stat-card.crisis .stat-value { color: var(--crisis); }
-        .crisis-badge { position: absolute; top: 8px; right: 8px; background: var(--crisis); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.65em; font-weight: 700; }
+        .currency-selector {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 6px 10px;
+            color: white;
+            font-size: 0.8em;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Poppins';
+        }
 
-        h2 { font-family: 'Fredoka One', cursive; font-size: 1.3em; margin: 20px 0 12px 0; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; text-shadow: 1px 1px 0px rgba(255,255,255,0.8); }
-        h2 i { color: var(--primary); font-size: 0.9em; }
+        .month-selector {
+            background: var(--surface);
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            border: 2px solid var(--border-color);
+        }
 
-        /* DEBTS & SHOPPING */
-        .debt-card { background: white; border-radius: 14px; padding: 12px; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #ccc; position: relative; }
-        .debt-card.owe { border-left-color: var(--danger); }
-        .debt-card.owed { border-left-color: var(--success); }
-        .debt-card.paid { opacity: 0.6; border-left-color: #ccc; background: #f9f9f9; }
-        .debt-card.paid .debt-info { text-decoration: line-through; }
-        .debt-card.overdue { border: 2px solid var(--danger); background: #FFF5F5; }
-        .overdue-badge { position: absolute; top: -8px; right: 10px; background: var(--danger); color: white; font-size: 0.6em; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
-        .debt-info h4 { margin: 0; font-size: 1em; color: var(--text); }
-        .debt-info p { margin: 0; font-size: 0.75em; color: var(--text-light); }
-        .debt-amount { font-weight: 800; font-size: 1.1em; }
-        .owe .debt-amount { color: var(--danger); }
-        .owed .debt-amount { color: var(--success); }
-        .debt-actions { display: flex; gap: 5px; }
-        .btn-check { background: var(--success); color: white; padding: 6px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
+        .month-selector label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9em;
+        }
 
-        .shopping-item { background: white; border-radius: 12px; padding: 12px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
-        .shopping-item.checked { opacity: 0.6; background: #F0F4F4; }
-        .shopping-item.checked span { text-decoration: line-through; color: var(--text-light); }
-        .shop-actions { display: flex; gap: 8px; }
-        .btn-buy { background: var(--primary); color: white; border-radius: 8px; padding: 5px 10px; font-size: 0.8em; font-weight: 600; }
+        .month-selector input {
+            flex: 1;
+            border: none;
+            background: var(--primary-light);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-family: 'Poppins';
+            color: var(--primary-dark);
+            font-size: 0.95em;
+        }
 
-        /* GOALS */
-        .progress-bar { width: 100%; height: 10px; background: #F0F4F4; border-radius: 10px; overflow: hidden; margin: 10px 0; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--success)); width: 0%; border-radius: 10px; transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        .goal-card { background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 16px; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid transparent; transition: transform 0.2s; }
-        .goal-card:active { transform: scale(0.99); }
-        .goal-card.completed { border-color: var(--success); background: #F6FFF6; }
-        .goal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .goal-name { font-size: 1.1em; font-weight: 800; color: var(--primary-dark); }
-        .goal-status { font-size: 0.85em; color: var(--primary); font-weight: 700; background: var(--primary-light); padding: 4px 8px; border-radius: 8px; }
-        .goal-amounts { display: flex; justify-content: space-between; margin: 12px 0; text-align: left; background: #FAFAFA; padding: 10px; border-radius: 10px; }
-        .goal-amount div:first-child { color: var(--text-light); font-size: 0.7em; margin-bottom: 2px; }
-        .goal-amount div:last-child { font-weight: 700; color: var(--text); font-size: 0.95em; }
-        .goal-buttons { display: flex; gap: 10px; margin-top: 10px; }
-        .goal-buttons button:first-child { flex: 2; }
-        .goal-buttons button:last-child { flex: 1; }
+        .tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 14px;
+            overflow-x: auto;
+            border-radius: 12px;
+            background: var(--surface);
+            padding: 4px;
+            border: 2px solid var(--border-color);
+            -webkit-overflow-scrolling: touch;
+        }
 
-        /* BEAR ANIMATION */
-        #bearOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
-        #bearOverlay.show { opacity: 1; }
-        .bear-anim-img { width: 300px; height: 300px; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2)); }
-        
-        /* CONFETTI */
-        @keyframes confetti-fall { 0% { opacity: 1; transform: translateY(0) rotateZ(0deg); } 100% { opacity: 0; transform: translateY(600px) rotateZ(720deg); } }
-        .confetti { position: fixed; pointer-events: none; animation: confetti-fall 3s ease-in forwards; z-index: 9999; }
-        .celebration-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2000; }
-        .celebration-message { background: white; color: var(--text); padding: 30px; border-radius: 20px; font-size: 1.5em; font-weight: 800; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); animation: slideInPulse 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-family: 'Fredoka One', cursive; }
-        @keyframes slideInPulse { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
-        
-        .empty-state { text-align: center; padding: 40px 16px; color: var(--text-light); background: rgba(255, 255, 255, 0.8); border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .empty-state-icon { font-size: 3em; margin-bottom: 12px; opacity: 0.6; color: var(--primary); }
+        .tab-btn {
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.8em;
+            color: var(--text-light);
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: 'Poppins';
+            font-weight: 700;
+            white-space: nowrap;
+        }
 
-        @media (max-width: 380px) { header h1 { font-size: 1.5em; } .stat-value { font-size: 1.2em; } }
+        .tab-btn.active {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .stat-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card.income {
+            border-color: rgba(155, 201, 151, 0.8);
+        }
+
+        .stat-card.expense {
+            border-color: rgba(245, 184, 184, 0.8);
+        }
+
+        .stat-card.savings {
+            border-color: rgba(197, 232, 224, 0.8);
+        }
+
+        .stat-card.available {
+            border-color: rgba(123, 168, 168, 0.8);
+            position: relative;
+        }
+
+        .stat-card.crisis {
+            border-color: var(--crisis);
+            background: rgba(231, 76, 60, 0.05);
+            animation: pulse-crisis 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-crisis {
+            0%, 100% { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); }
+            50% { box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3); }
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.75em;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .stat-card.income .stat-value {
+            color: var(--success);
+        }
+
+        .stat-card.expense .stat-value {
+            color: var(--danger);
+        }
+
+        .stat-card.savings .stat-value {
+            color: var(--primary);
+        }
+
+        .stat-card.available .stat-value {
+            color: var(--primary);
+        }
+
+        .stat-card.crisis .stat-value {
+            color: var(--crisis);
+        }
+
+        .crisis-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: var(--crisis);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.65em;
+            font-weight: 700;
+            animation: bounce 0.8s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        h2 {
+            font-size: 1.1em;
+            margin: 16px 0 10px 0;
+            color: var(--primary);
+        }
+
+        .form-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            margin-bottom: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8em;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-family: 'Poppins';
+            font-size: 1em;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 168, 168, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins';
+            font-size: 0.95em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(123, 168, 168, 0.2);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button.danger {
+            background: var(--danger);
+        }
+
+        .expense-type-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .type-btn {
+            padding: 10px;
+            border: 2px solid var(--border-color);
+            background: var(--surface);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85em;
+            transition: all 0.3s;
+            font-family: 'Poppins';
+        }
+
+        .type-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            margin-bottom: 14px;
+            font-size: 0.9em;
+        }
+
+        th {
+            background: var(--primary-light);
+            padding: 10px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.8em;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 24px 16px;
+            color: var(--text-light);
+        }
+
+        .empty-state-emoji {
+            font-size: 2.5em;
+            margin-bottom: 8px;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            z-index: 3000;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--primary-light);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .goal-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .goal-card.completed {
+            border-color: rgba(155, 201, 151, 0.5);
+            background: rgba(155, 201, 151, 0.08);
+        }
+
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .goal-name {
+            font-size: 1em;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .goal-status {
+            font-size: 0.8em;
+            color: var(--text-light);
+            font-weight: 700;
+        }
+
+        .goal-amounts {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .goal-amount {
+            background: var(--primary-light);
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.8em;
+        }
+
+        .goal-amount-label {
+            color: var(--text-light);
+            font-size: 0.7em;
+        }
+
+        .goal-amount-value {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1em;
+            margin-top: 2px;
+        }
+
+        .goal-buttons {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .btn-small {
+            padding: 8px 10px;
+            font-size: 0.75em;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotateZ(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(500px) rotateZ(720deg);
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            animation: confetti-fall 2.5s ease-in forwards;
+            z-index: 1000;
+        }
+
+        .celebration-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 2000;
+        }
+
+        .celebration-message {
+            background: linear-gradient(135deg, #9BC997 0%, #7BA8A8 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 16px;
+            font-size: 1.6em;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideInPulse 0.6s ease-out;
+        }
+
+        @keyframes slideInPulse {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-50px);
+            }
+            70% {
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                padding-bottom: 110px;
+            }
+
+            header {
+                padding: 16px 12px;
+                margin-bottom: 12px;
+                border-radius: 14px;
+            }
+
+            header h1 {
+                font-size: 1.6em;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .stat-card {
+                padding: 12px;
+            }
+
+            .stat-value {
+                font-size: 1.3em;
+            }
+
+            input, select, button {
+                font-size: 16px;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            td, th {
+                padding: 8px;
+            }
+        }
     </style>
-    
-    <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(e => console.log(e));
-      });
-    }
-    </script>
 </head>
 <body>
-    <div id="bearOverlay">
-        <img id="bearAnimImg" class="bear-anim-img" src="" alt="Bear" style="display:none;">
-        <div id="bearEmojiBackup" style="font-size: 120px; display:none;"></div>
-    </div>
-
     <div class="container">
         <header>
-            <div class="header-text">
-                <h1>The Money Game</h1>
-                <p>Just do it <i class="fas fa-star" style="color:#FFD700;"></i></p>
+            <div class="header-top">
+                <div>
+                    <h1>Money Game</h1>
+                    <p>There's no try, just do ✨</p>
+                </div>
+                <select class="currency-selector" id="currencySelector" onchange="changeCurrency(this.value)">
+                    <option value="CLP">CLP 🇨🇱</option>
+                    <option value="USD">USD 🇺🇸</option>
+                </select>
             </div>
         </header>
 
         <div class="month-selector">
-            <label for="monthInput"><i class="far fa-calendar-alt"></i></label>
+            <label for="monthInput">📅</label>
             <input type="month" id="monthInput" onchange="changeMonth(this.value)">
         </div>
 
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('dashboard', event)">
-                <i class="fas fa-chart-pie"></i> Resumen
-            </button>
-            <button class="tab-btn" onclick="switchTab('income', event)">
-                <i class="fas fa-wallet"></i> Ingresos
-            </button>
-            <button class="tab-btn" onclick="switchTab('expenses', event)">
-                <i class="fas fa-money-bill-wave"></i> Gastos
-            </button>
-            <button class="tab-btn" onclick="switchTab('shopping', event)">
-                <i class="fas fa-shopping-cart"></i> Compras
-            </button>
-            <button class="tab-btn" onclick="switchTab('debts', event)">
-                <i class="fas fa-hand-holding-usd"></i> Deudas
-            </button>
-            <button class="tab-btn" onclick="switchTab('goals', event)">
-                <i class="fas fa-bullseye"></i> Metas
-            </button>
+            <button class="tab-btn active" onclick="switchTab('dashboard', event)">📊 Dashboard</button>
+            <button class="tab-btn" onclick="switchTab('income', event)">💰 Ingresos</button>
+            <button class="tab-btn" onclick="switchTab('expenses', event)">💸 Gastos</button>
+            <button class="tab-btn" onclick="switchTab('goals', event)">🎯 Metas</button>
         </div>
 
         <div id="dashboard" class="tab-content active">
@@ -239,8 +672,8 @@
                     <div class="stat-value" id="totalExpense">$0</div>
                 </div>
                 <div class="stat-card savings">
-                    <div class="stat-label">Ahorrado Mes</div>
-                    <div class="stat-value" id="totalAllocated">$0</div>
+                    <div class="stat-label">Ahorros</div>
+                    <div class="stat-value" id="totalSavings">$0</div>
                 </div>
                 <div class="stat-card available" id="availableCard">
                     <div class="stat-label">Disponible</div>
@@ -250,70 +683,72 @@
 
             <div id="crisisAlert" style="display: none;">
                 <div class="stat-card crisis">
-                    <div class="crisis-badge"><i class="fas fa-exclamation-triangle"></i> ALERTA</div>
-                    <div class="stat-label">¡CUIDADO!</div>
-                    <div class="stat-value" style="font-size: 1.2em;">Bajos Fondos</div>
-                    <p style="font-size: 0.85em; color: var(--crisis); margin-top: 8px; line-height: 1.4;">Te queda menos del 20% de tu dinero disponible.</p>
+                    <div class="crisis-badge">⚠️ ALERTA</div>
+                    <div class="stat-label">¡PELIGRO!</div>
+                    <div class="stat-value" style="font-size: 1.3em;">Apunto de Crisis Financiera</div>
+                    <p style="font-size: 0.8em; color: var(--crisis); margin-top: 8px;">Te quedan menos del 25% de tu ingreso. ¡Reduce gastos!</p>
                 </div>
             </div>
 
-            <h2><i class="fas fa-trophy"></i> Progreso de Metas</h2>
+            <h2>📈 Progreso de Metas</h2>
             <div id="goalsProgress"></div>
-            <div id="goalsProgressEmpty" class="empty-state" style="display:none; padding: 20px;">
-                <p>No tienes metas activas aún.</p>
-            </div>
         </div>
 
         <div id="income" class="tab-content">
             <div class="form-card">
-                <h2><i class="fas fa-plus-circle"></i> Nuevo Ingreso</h2>
+                <h2>Agregar Ingreso</h2>
                 <div class="form-group">
                     <label>Descripción</label>
-                    <input type="text" id="incomeDescription" placeholder="Ej: Sueldo, Venta...">
+                    <input type="text" id="incomeDescription" placeholder="Ej: Salario, Bonus">
                 </div>
                 <div class="form-group">
                     <label>Monto</label>
                     <input type="number" id="incomeAmount" placeholder="0" min="0">
                 </div>
                 <div class="form-group">
-                    <label>Frecuencia</label>
+                    <label>Tipo</label>
                     <div class="expense-type-selector">
-                        <button class="type-btn active" onclick="setIncomeType(this, 'once')">Una vez</button>
-                        <button class="type-btn" onclick="setIncomeType(this, 'recurring')">Mensual</button>
+                        <button class="type-btn active" onclick="setIncomeType(this, 'once')">Una sola vez</button>
+                        <button class="type-btn" onclick="setIncomeType(this, 'recurring')">Recurrente</button>
                     </div>
                     <input type="hidden" id="incomeType" value="once">
                 </div>
-                <button onclick="addTransaction('income')">Guardar Ingreso <i class="fas fa-check"></i></button>
+                <button onclick="addIncome()">Agregar Ingreso ✨</button>
             </div>
 
-            <h2>Historial del Mes</h2>
+            <h2>Ingresos de este mes</h2>
             <table id="incomeTable">
                 <thead>
-                    <tr><th>Item</th><th>Monto</th><th style="text-align: right;">Borrar</th></tr>
+                    <tr>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                        <th>Tipo</th>
+                        <th>Acción</th>
+                    </tr>
                 </thead>
                 <tbody id="incomeBody"></tbody>
             </table>
             <div id="incomeEmpty" class="empty-state">
-                <div class="empty-state-icon"><i class="fas fa-leaf"></i></div>
-                <p>Nada por aquí aún.</p>
+                <div class="empty-state-emoji">💰</div>
+                <p>No hay ingresos registrados. ¡Agrega uno!</p>
             </div>
         </div>
 
         <div id="expenses" class="tab-content">
             <div class="form-card">
-                <h2><i class="fas fa-minus-circle"></i> Nuevo Gasto</h2>
+                <h2>Agregar Gasto</h2>
                 <div class="form-group">
-                    <label>¿En qué gastaste?</label>
-                    <input type="text" id="expenseDescription" placeholder="Ej: Supermercado...">
+                    <label>Descripción</label>
+                    <input type="text" id="expenseDescription" placeholder="Ej: Comida, Transporte">
                 </div>
                 <div class="form-group">
                     <label>Categoría</label>
                     <select id="expenseCategory">
-                        <option value="Comida">🍔 Comida / Super</option>
+                        <option value="Comida">🍔 Comida</option>
                         <option value="Transporte">🚗 Transporte</option>
-                        <option value="Hogar">🏠 Hogar / Cuentas</option>
-                        <option value="Gustitos">💖 Gustitos</option>
-                        <option value="Salud">💊 Salud</option>
+                        <option value="Utilidades">⚡ Utilidades</option>
+                        <option value="Entretenimiento">🎬 Entretenimiento</option>
+                        <option value="Salud">🏥 Salud</option>
                         <option value="Suscripciones">📺 Suscripciones</option>
                         <option value="Otro">📌 Otro</option>
                     </select>
@@ -323,520 +758,517 @@
                     <input type="number" id="expenseAmount" placeholder="0" min="0">
                 </div>
                 <div class="form-group">
-                    <label>Frecuencia</label>
+                    <label>Tipo</label>
                     <div class="expense-type-selector">
-                        <button class="type-btn active" onclick="setExpenseType(this, 'once')">Una vez</button>
-                        <button class="type-btn" onclick="setExpenseType(this, 'recurring')">Mensual</button>
+                        <button class="type-btn active" onclick="setExpenseType(this, 'once')">Una sola vez</button>
+                        <button class="type-btn" onclick="setExpenseType(this, 'recurring')">Recurrente</button>
                     </div>
                     <input type="hidden" id="expenseType" value="once">
                 </div>
-                <button onclick="addTransaction('expense')" style="background-color: var(--danger);">Registrar Gasto <i class="fas fa-arrow-right"></i></button>
+                <button onclick="addExpense()">Agregar Gasto 💸</button>
             </div>
 
-            <h2>Gastos del Mes</h2>
+            <h2>Gastos de este mes</h2>
             <table id="expenseTable">
                 <thead>
-                    <tr><th>Item</th><th>Monto</th><th style="text-align: right;">Borrar</th></tr>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                        <th>Tipo</th>
+                        <th>Acción</th>
+                    </tr>
                 </thead>
                 <tbody id="expenseBody"></tbody>
             </table>
             <div id="expenseEmpty" class="empty-state">
-                <div class="empty-state-icon"><i class="fas fa-magic"></i></div>
-                <p>¡Todo limpio! Sin gastos.</p>
-            </div>
-        </div>
-
-        <div id="shopping" class="tab-content">
-            <div class="form-card">
-                <h2><i class="fas fa-shopping-cart"></i> Lista de Compras</h2>
-                <div class="form-group">
-                    <input type="text" id="shopItem" placeholder="¿Qué necesitas comprar?">
-                </div>
-                <button onclick="addToShoppingList()">Agregar a la lista <i class="fas fa-plus"></i></button>
-            </div>
-            <h2>Por comprar</h2>
-            <div id="shoppingContainer"></div>
-            <div id="shoppingEmpty" class="empty-state">
-                <div class="empty-state-icon"><i class="fas fa-clipboard-check"></i></div>
-                <p>Tu lista está vacía.</p>
-            </div>
-        </div>
-
-        <div id="debts" class="tab-content">
-            <div class="form-card">
-                <h2><i class="fas fa-handshake"></i> Registro de Deudas</h2>
-                <div class="form-group">
-                    <div class="expense-type-selector">
-                        <button class="type-btn active" onclick="setDebtType(this, 'owed')">Me deben 🤑</button>
-                        <button class="type-btn" onclick="setDebtType(this, 'owe')">Yo debo 😓</button>
-                    </div>
-                    <input type="hidden" id="debtType" value="owed">
-                </div>
-                <div class="form-group">
-                    <label>Persona</label>
-                    <input type="text" id="debtPerson" placeholder="Nombre...">
-                </div>
-                <div class="form-group">
-                    <label>Monto</label>
-                    <input type="number" id="debtAmount" placeholder="0" min="0">
-                </div>
-                <div class="form-group">
-                    <label>Fecha del préstamo</label>
-                    <input type="date" id="debtDate">
-                </div>
-                <button onclick="addDebt()">Guardar Deuda <i class="fas fa-save"></i></button>
-            </div>
-            <h2>Pendientes</h2>
-            <div id="debtsContainer"></div>
-            <div id="debtsEmpty" class="empty-state">
-                <div class="empty-state-icon"><i class="fas fa-peace"></i></div>
-                <p>Sin deudas pendientes.</p>
+                <div class="empty-state-emoji">💸</div>
+                <p>No hay gastos registrados. ¡Excelente!</p>
             </div>
         </div>
 
         <div id="goals" class="tab-content">
             <div class="form-card">
-                <h2><i class="fas fa-crosshairs"></i> Crear Meta</h2>
+                <h2>Nueva Meta de Ahorro</h2>
                 <div class="form-group">
                     <label>Nombre de la Meta</label>
-                    <input type="text" id="goalName" placeholder="Ej: PC Gamer, Viaje...">
+                    <input type="text" id="goalName" placeholder="Ej: Viaje a Japón">
                 </div>
                 <div class="form-group">
-                    <label>Monto a juntar</label>
+                    <label>Monto Objetivo</label>
                     <input type="number" id="goalAmount" placeholder="0" min="0">
                 </div>
-                <button onclick="addGoal()">Comenzar Meta <i class="fas fa-rocket"></i></button>
+                <button onclick="addGoal()">Crear Meta 🎯</button>
             </div>
-            <h2>Mis Objetivos</h2>
+
+            <h2>Mis Metas</h2>
             <div id="goalsContainer"></div>
             <div id="goalsEmpty" class="empty-state">
-                <div class="empty-state-icon"><i class="fas fa-mountain"></i></div>
-                <p>Define una meta para empezar.</p>
+                <div class="empty-state-emoji">🎯</div>
+                <p>No hay metas. ¡Crea una para motivarte!</p>
             </div>
         </div>
     </div>
 
     <script>
-        // --- DATA STRUCTURE (PROFESSIONAL FLAT MODEL) ---
         let data = {
+            currency: 'CLP',
             currentMonth: new Date().toISOString().slice(0, 7),
-            transactions: [], // { id, type, amount, description, category, date, recurring }
-            goals: [],        // { id, name, targetAmount, savedAmount }
-            debts: [],        // { id, person, amount, date, type, status }
-            shopping: []      // { id, name, checked }
+            incomeDate: null,
+            income: {},
+            expenses: {},
+            goals: {},
+            goalsHistory: {}
         };
 
-        // --- APP INITIALIZATION ---
+        const currencySymbols = { 'CLP': '$', 'USD': '$' };
+        const currencyRates = { 'CLP': 1, 'USD': 850 };
+
+        // 🚀 MEJORA 1: Formatters cacheados para mejor performance
+        const currencyFormatters = {
+            CLP: new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }),
+            USD: new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'USD' })
+        };
+
+        let renderTimeout;
+
+        // 🚀 MEJORA 2: Sistema de notificaciones mejorado
+        function showNotification(message, duration = 3000) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.3s ease reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, duration);
+        }
+
+        // 🚀 MEJORA 3: Validación robusta de formularios
+        function validateForm(...fields) {
+            for (let field of fields) {
+                if (!field || (typeof field === 'number' && field <= 0)) {
+                    showNotification('⚠️ Completa todos los campos correctamente');
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // 🚀 MEJORA 4: Service Worker registration optimizado
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('SW registrado ✅'))
+                    .catch(err => console.log('SW error:', err));
+            });
+        }
+
         function initApp() {
             document.getElementById('monthInput').value = data.currentMonth;
-            document.getElementById('debtDate').valueAsDate = new Date();
             loadData();
             render();
         }
 
-        function saveData() { localStorage.setItem('moneyGameData_v2', JSON.stringify(data)); }
-        function loadData() {
-            const saved = localStorage.getItem('moneyGameData_v2');
-            if (saved) {
-                data = JSON.parse(saved);
-            } else {
-                // Migration logic (Optional, for now we start fresh or keep empty)
-                const oldData = localStorage.getItem('financialData');
-                if (oldData) { console.log("Old data found but starting fresh with V2 structure for stability."); }
-            }
+        function changeCurrency(currency) {
+            data.currency = currency;
+            saveData();
+            scheduleRender();
         }
 
-        // --- NAVIGATION ---
+        function changeMonth(month) {
+            data.currentMonth = month;
+            scheduleRender();
+        }
+
         function switchTab(tabName, event) {
-            // Remove active class from all content and buttons
+            event.preventDefault();
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            
-            // Activate selected
-            const targetContent = document.getElementById(tabName);
-            if(targetContent) targetContent.classList.add('active');
-            
-            if(event && event.currentTarget) event.currentTarget.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
         }
 
-        function changeMonth(month) { data.currentMonth = month; render(); }
-
-        // --- TYPE SETTERS ---
         function setIncomeType(btn, type) {
             btn.parentElement.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             document.getElementById('incomeType').value = type;
         }
+
         function setExpenseType(btn, type) {
             btn.parentElement.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             document.getElementById('expenseType').value = type;
         }
-        function setDebtType(btn, type) {
-            btn.parentElement.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('debtType').value = type;
-        }
 
-        // --- FORMATTING ---
+        // 🚀 MEJORA 5: Formateo de moneda optimizado con caché
         function formatCurrency(amount) {
-            return '$' + amount.toLocaleString('es-CL', { maximumFractionDigits: 0 });
-        }
-
-        // --- TRANSACTIONS (INCOME & EXPENSE) ---
-        function addTransaction(type) {
-            const isIncome = type === 'income';
-            const descInput = document.getElementById(isIncome ? 'incomeDescription' : 'expenseDescription');
-            const amountInput = document.getElementById(isIncome ? 'incomeAmount' : 'expenseAmount');
-            const typeInput = document.getElementById(isIncome ? 'incomeType' : 'expenseType');
-            const catInput = isIncome ? null : document.getElementById('expenseCategory');
-
-            const description = descInput.value;
-            const amount = parseFloat(amountInput.value);
-            const freq = typeInput.value;
-            const category = catInput ? catInput.value : 'Ingreso';
-
-            if (!description || !amount) return alert('Completa los campos 🙏');
-
-            const newTx = {
-                id: Date.now(),
-                type: type, // 'income' or 'expense'
-                amount: amount,
-                description: description,
-                category: category,
-                isRecurring: freq === 'recurring',
-                date: data.currentMonth + '-01' // Assign to current selected month
-            };
-
-            data.transactions.push(newTx);
-            
-            // Reset fields
-            descInput.value = '';
-            amountInput.value = '';
-            
-            saveData();
-            render();
-            showBearFeedback(isIncome ? 'happy' : 'sad');
-            if(isIncome) document.querySelector('.tab-btn.active').click(); 
-        }
-
-        function deleteTransaction(id) {
-            if(confirm('¿Borrar este registro?')) {
-                data.transactions = data.transactions.filter(t => t.id !== id);
-                saveData();
-                render();
+            try {
+                const converted = amount / currencyRates[data.currency];
+                return currencyFormatters[data.currency].format(converted);
+            } catch {
+                return currencySymbols[data.currency] + amount.toLocaleString('es-CL');
             }
         }
 
-        // --- GOALS ---
-        function addGoal() {
-            const name = document.getElementById('goalName').value;
-            const amount = parseFloat(document.getElementById('goalAmount').value);
-            if (!name || !amount) return alert('Completa los campos 🙏');
+        function addIncome() {
+            const description = document.getElementById('incomeDescription').value.trim();
+            const amount = parseFloat(document.getElementById('incomeAmount').value);
+            const type = document.getElementById('incomeType').value;
 
-            data.goals.push({
-                id: Date.now(),
-                name: name,
-                targetAmount: amount,
-                savedAmount: 0 // In flat structure, we could link txs, but simplified here
-            });
+            if (!validateForm(description, amount)) return;
 
-            document.getElementById('goalName').value = '';
-            document.getElementById('goalAmount').value = '';
-            saveData();
-            render();
-            showBearFeedback('happy');
-        }
-
-        function addToGoal(id) {
-            const amount = parseFloat(prompt('¿Cuánto vas a abonar hoy? 💰'));
-            if (amount && amount > 0) {
-                const goal = data.goals.find(g => g.id == id);
-                if(goal) {
-                    goal.savedAmount += amount;
-                    // Also record as an expense? Ideally yes, but let's keep it simple for now
-                    // Or we could create a "Transfer" transaction type.
-                    // For now just tracking progress.
-                    saveData();
-                    render();
-                    if (goal.savedAmount >= goal.targetAmount) {
-                        showCelebration('🐻 ¡Meta Completada! 🐻');
-                        showBearFeedback('happy');
-                    } else {
-                        showBearFeedback('happy');
-                    }
+            try {
+                if (!data.income[data.currentMonth]) {
+                    data.income[data.currentMonth] = [];
+                    data.incomeDate = new Date().getTime();
                 }
-            }
-        }
 
-        function deleteGoal(id) {
-            if(confirm('¿Eliminar meta?')) {
-                data.goals = data.goals.filter(g => g.id != id);
-                saveData();
-                render();
-            }
-        }
+                data.income[data.currentMonth].push({ description, amount, type });
 
-        // --- DEBTS ---
-        function addDebt() {
-            const person = document.getElementById('debtPerson').value;
-            const amount = parseFloat(document.getElementById('debtAmount').value);
-            const date = document.getElementById('debtDate').value;
-            const type = document.getElementById('debtType').value;
-
-            if (!person || !amount || !date) return alert('Faltan datos');
-
-            data.debts.push({
-                id: Date.now(),
-                person, amount, date, type, status: 'pending'
-            });
-
-            document.getElementById('debtPerson').value = '';
-            document.getElementById('debtAmount').value = '';
-            saveData();
-            render();
-            showBearFeedback('sad');
-        }
-
-        function toggleDebtStatus(id) {
-            const debt = data.debts.find(d => d.id == id);
-            if (debt) {
-                debt.status = debt.status === 'pending' ? 'paid' : 'pending';
-                saveData();
-                render();
-                if(debt.status === 'paid') showCelebration('¡Deuda Saldada! 💸');
-            }
-        }
-
-        function deleteDebt(id) {
-            if(confirm('¿Borrar deuda?')) {
-                data.debts = data.debts.filter(d => d.id != id);
-                saveData();
-                render();
-            }
-        }
-
-        // --- SHOPPING ---
-        function addToShoppingList() {
-            const item = document.getElementById('shopItem').value;
-            if (!item) return;
-            data.shopping.push({ id: Date.now(), name: item, checked: false });
-            document.getElementById('shopItem').value = '';
-            saveData();
-            renderShopping();
-        }
-
-        function toggleShopItem(id) {
-            const item = data.shopping.find(i => i.id == id);
-            if (item) { item.checked = !item.checked; saveData(); renderShopping(); }
-        }
-
-        function deleteShopItem(id) {
-            data.shopping = data.shopping.filter(i => i.id != id);
-            saveData(); renderShopping();
-        }
-
-        function buyShopItem(id) {
-            const item = data.shopping.find(i => i.id == id);
-            if (!item) return;
-            const price = prompt(`¿Cuánto costó "${item.name}"?`);
-            if (price !== null && price !== "") {
-                const amount = parseFloat(price);
-                if (isNaN(amount)) return alert("Monto inválido");
-                
-                // Add to expenses
-                data.transactions.push({
-                    id: Date.now(),
-                    type: 'expense',
-                    amount: amount,
-                    description: item.name,
-                    category: 'Comida', // Default
-                    isRecurring: false,
-                    date: data.currentMonth + '-01'
-                });
-
-                // Remove from shopping
-                data.shopping = data.shopping.filter(i => i.id != id);
+                document.getElementById('incomeDescription').value = '';
+                document.getElementById('incomeAmount').value = '';
                 
                 saveData();
-                render();
-                showBearFeedback('sad');
+                scheduleRender();
+                showNotification('💰 Ingreso agregado correctamente');
+            } catch (error) {
+                showNotification('❌ Error al agregar ingreso');
+                console.error(error);
             }
         }
 
-        // --- RENDER ENGINE (CORE) ---
+        function addExpense() {
+            const description = document.getElementById('expenseDescription').value.trim();
+            const category = document.getElementById('expenseCategory').value;
+            const amount = parseFloat(document.getElementById('expenseAmount').value);
+            const type = document.getElementById('expenseType').value;
+
+            if (!validateForm(description, amount)) return;
+
+            try {
+                if (!data.expenses[data.currentMonth]) data.expenses[data.currentMonth] = [];
+                data.expenses[data.currentMonth].push({ description, category, amount, type });
+
+                document.getElementById('expenseDescription').value = '';
+                document.getElementById('expenseAmount').value = '';
+                
+                saveData();
+                scheduleRender();
+                showNotification('💸 Gasto agregado correctamente');
+            } catch (error) {
+                showNotification('❌ Error al agregar gasto');
+                console.error(error);
+            }
+        }
+
+        function addGoal() {
+            const name = document.getElementById('goalName').value.trim();
+            const amount = parseFloat(document.getElementById('goalAmount').value);
+
+            if (!validateForm(name, amount)) return;
+
+            try {
+                const goalId = Date.now().toString();
+                data.goals[goalId] = { name, targetAmount: amount, createdMonth: data.currentMonth };
+                data.goalsHistory[goalId] = { [data.currentMonth]: 0 };
+
+                document.getElementById('goalName').value = '';
+                document.getElementById('goalAmount').value = '';
+                
+                saveData();
+                scheduleRender();
+                showNotification('🎯 Meta creada correctamente');
+            } catch (error) {
+                showNotification('❌ Error al crear meta');
+                console.error(error);
+            }
+        }
+
+        function deleteIncome(index) {
+            try {
+                data.income[data.currentMonth].splice(index, 1);
+                saveData();
+                scheduleRender();
+                showNotification('🗑️ Ingreso eliminado');
+            } catch (error) {
+                showNotification('❌ Error al eliminar');
+                console.error(error);
+            }
+        }
+
+        function deleteExpense(index) {
+            try {
+                data.expenses[data.currentMonth].splice(index, 1);
+                saveData();
+                scheduleRender();
+                showNotification('🗑️ Gasto eliminado');
+            } catch (error) {
+                showNotification('❌ Error al eliminar');
+                console.error(error);
+            }
+        }
+
+        function deleteGoal(goalId) {
+            try {
+                delete data.goals[goalId];
+                saveData();
+                scheduleRender();
+                showNotification('🗑️ Meta eliminada');
+            } catch (error) {
+                showNotification('❌ Error al eliminar');
+                console.error(error);
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#9BC997', '#F5D5A8', '#C5E8E0', '#F5D4C0', '#38bdf8', '#FFD700'];
+            const emojis = ['🎉', '🎊', '⭐', '✨', '🌟', '💚'];
+
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = '-10px';
+                confetti.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 2500);
+            }
+        }
+
+        function showCelebration() {
+            createConfetti();
+            const overlay = document.createElement('div');
+            overlay.className = 'celebration-overlay';
+            overlay.innerHTML = '<div class="celebration-message">🎉 ¡Meta Lograda! 🎉</div>';
+            document.body.appendChild(overlay);
+
+            setTimeout(() => overlay.remove(), 3000);
+        }
+
+        // 🚀 MEJORA 6: Mejor detección de crisis con timestamp
+        function checkCrisis() {
+            const { income, expenses } = calculateTotals();
+            const available = income - expenses;
+            const percentAvailable = income > 0 ? (available / income) * 100 : 100;
+            
+            if (!data.incomeDate) return false;
+
+            const now = new Date().getTime();
+            const daysSinceIncome = Math.floor((now - data.incomeDate) / (1000 * 60 * 60 * 24));
+
+            return percentAvailable < 25 && daysSinceIncome < 15;
+        }
+
+        function addToGoal(goalId) {
+            const amount = parseFloat(prompt('¿Cuánto deseas ahorrar para esta meta?'));
+            if (!amount || amount <= 0) {
+                showNotification('⚠️ Ingresa un monto válido');
+                return;
+            }
+
+            try {
+                if (!data.goalsHistory[goalId]) data.goalsHistory[goalId] = {};
+                if (!data.goalsHistory[goalId][data.currentMonth]) {
+                    data.goalsHistory[goalId][data.currentMonth] = 0;
+                }
+                data.goalsHistory[goalId][data.currentMonth] += amount;
+
+                const goal = data.goals[goalId];
+                const totalSaved = Object.values(data.goalsHistory[goalId] || {}).reduce((a, b) => a + b, 0);
+                const wasCompleted = totalSaved - amount >= goal.targetAmount;
+                const isNowCompleted = totalSaved >= goal.targetAmount;
+
+                saveData();
+                scheduleRender();
+                showNotification('💾 Ahorro agregado correctamente');
+
+                if (!wasCompleted && isNowCompleted) {
+                    showCelebration();
+                }
+            } catch (error) {
+                showNotification('❌ Error al agregar ahorro');
+                console.error(error);
+            }
+        }
+
+        function calculateTotals() {
+            let income = 0, expenses = 0;
+
+            if (data.income[data.currentMonth]) {
+                data.income[data.currentMonth].forEach(i => income += i.amount);
+            }
+            if (data.expenses[data.currentMonth]) {
+                data.expenses[data.currentMonth].forEach(e => expenses += e.amount);
+            }
+
+            return { income, expenses, savings: income - expenses };
+        }
+
+        // 🚀 MEJORA 7: Render con debounce para evitar renders excesivos
+        function scheduleRender() {
+            clearTimeout(renderTimeout);
+            renderTimeout = setTimeout(render, 100);
+        }
+
         function render() {
-            // 1. Filter Transactions by Month
-            const monthTxs = data.transactions.filter(t => t.date.startsWith(data.currentMonth));
-            
-            // 2. Calculate Totals
-            let income = 0, expenses = 0, savings = 0;
-            monthTxs.forEach(t => {
-                if(t.type === 'income') income += t.amount;
-                if(t.type === 'expense') expenses += t.amount;
-            });
-            
-            // Calculate savings based on goals contributions in this month? 
-            // For simpler logic, let's sum total saved across all goals for display, 
-            // OR we treat "Available" as Income - Expense.
-            // Let's stick to the "Available = Income - Expense" model for simplicity + Goal contributions if we tracked them as expenses.
-            
-            // Let's assume Savings = Sum of all goal.savedAmount (Total Life Savings) or Monthly allocation?
-            // To keep it clean: "Ahorrado Mes" needs transaction tracking. 
-            // For now, let's display "Total Ahorrado" from all goals.
-            const totalSavedInGoals = data.goals.reduce((acc, g) => acc + g.savedAmount, 0);
-            
-            const available = income - expenses; // Strictly cash flow
+            const { income, expenses, savings } = calculateTotals();
+            const available = income - expenses;
 
-            // 3. Update Dashboard
             document.getElementById('totalIncome').textContent = formatCurrency(income);
             document.getElementById('totalExpense').textContent = formatCurrency(expenses);
-            document.getElementById('totalAllocated').textContent = formatCurrency(totalSavedInGoals);
+            document.getElementById('totalSavings').textContent = formatCurrency(savings);
             document.getElementById('totalAvailable').textContent = formatCurrency(available);
 
-            const card = document.getElementById('availableCard');
-            const alert = document.getElementById('crisisAlert');
-            if (income > 0 && (available / income) < 0.2) {
-                card.classList.add('crisis');
-                alert.style.display = 'block';
+            const availableCard = document.getElementById('availableCard');
+            const crisisAlert = document.getElementById('crisisAlert');
+
+            if (checkCrisis()) {
+                availableCard.classList.add('crisis');
+                crisisAlert.style.display = 'block';
             } else {
-                card.classList.remove('crisis');
-                alert.style.display = 'none';
+                availableCard.classList.remove('crisis');
+                crisisAlert.style.display = 'none';
             }
 
-            // 4. Render Lists
-            renderTxList(monthTxs.filter(t => t.type === 'income'), 'incomeBody', 'incomeEmpty', 'incomeTable');
-            renderTxList(monthTxs.filter(t => t.type === 'expense'), 'expenseBody', 'expenseEmpty', 'expenseTable');
-            renderDebts();
+            renderIncome();
+            renderExpenses();
             renderGoals();
-            renderGoalsProgress();
-            renderShopping();
         }
 
-        function renderTxList(list, bodyId, emptyId, tableId) {
-            const tbody = document.getElementById(bodyId);
-            const empty = document.getElementById(emptyId);
-            const table = document.getElementById(tableId);
-            
+        function renderIncome() {
+            const tbody = document.getElementById('incomeBody');
+            const empty = document.getElementById('incomeEmpty');
             tbody.innerHTML = '';
-            if(list.length === 0) {
+
+            const items = data.income[data.currentMonth] || [];
+            if (items.length === 0) {
                 empty.style.display = 'block';
-                table.style.display = 'none';
-            } else {
-                empty.style.display = 'none';
-                table.style.display = 'table';
-                list.forEach(t => {
-                    const icon = t.isRecurring ? '<i class="fas fa-sync-alt"></i>' : '';
-                    const catDisplay = t.type === 'expense' ? `${t.category} ${icon}` : (t.isRecurring ? 'Mensual' : 'Único');
-                    const color = t.type === 'income' ? 'var(--success)' : 'var(--danger)';
-                    const sign = t.type === 'income' ? '+' : '-';
-                    
-                    const row = `
-                    <tr>
-                        <td><b>${t.description}</b><br><span style="font-size:0.8em; color:#999">${catDisplay}</span></td>
-                        <td style="color:${color}; font-weight:700;">${sign}${formatCurrency(t.amount)}</td>
-                        <td style="text-align:right;"><button class="btn-small" onclick="deleteTransaction(${t.id})"><i class="fas fa-trash"></i></button></td>
-                    </tr>`;
-                    tbody.innerHTML += row;
-                });
+                document.getElementById('incomeTable').style.display = 'none';
+                return;
             }
+
+            empty.style.display = 'none';
+            document.getElementById('incomeTable').style.display = 'table';
+
+            items.forEach((item, idx) => {
+                const row = `<tr>
+                    <td>${item.description}</td>
+                    <td>${formatCurrency(item.amount)}</td>
+                    <td>${item.type === 'once' ? '📅' : '🔄'}</td>
+                    <td><button class="btn-small" onclick="deleteIncome(${idx})">🗑️</button></td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
         }
 
-        function renderDebts() {
-            const container = document.getElementById('debtsContainer');
-            const empty = document.getElementById('debtsEmpty');
-            container.innerHTML = '';
-            if (data.debts.length === 0) { empty.style.display = 'block'; } 
-            else { empty.style.display = 'none'; const today = new Date();
-                data.debts.forEach(d => {
-                    const dDate = new Date(d.date);
-                    const diff = Math.ceil(Math.abs(today - dDate) / (1000 * 60 * 60 * 24));
-                    const isOverdue = diff > 10 && d.status === 'pending';
-                    const label = d.type === 'owed' ? 'Me deben' : 'Yo debo';
-                    
-                    const card = `<div class="debt-card ${d.type} ${d.status} ${isOverdue ? 'overdue' : ''}">
-                        ${isOverdue ? '<span class="overdue-badge">¡VENCIDO!</span>' : ''}
-                        <div class="debt-info"><h4>${d.person}</h4><p>${label} • ${dDate.toLocaleDateString('es-CL', {timeZone:'UTC'})}</p><div class="debt-amount">${formatCurrency(d.amount)}</div></div>
-                        <div class="debt-actions">
-                            <button class="btn-check" onclick="toggleDebtStatus(${d.id})">${d.status==='paid'?'<i class="fas fa-undo"></i>':'<i class="fas fa-check"></i>'}</button>
-                            <button class="btn-small" onclick="deleteDebt(${d.id})"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </div>`;
-                    container.innerHTML += card;
-                });
-            }
-        }
+        function renderExpenses() {
+            const tbody = document.getElementById('expenseBody');
+            const empty = document.getElementById('expenseEmpty');
+            tbody.innerHTML = '';
 
-        function renderShopping() {
-            const container = document.getElementById('shoppingContainer');
-            const empty = document.getElementById('shoppingEmpty');
-            container.innerHTML = '';
-            if (data.shopping.length === 0) { empty.style.display = 'block'; }
-            else { empty.style.display = 'none';
-                data.shopping.forEach(i => {
-                    const div = `<div class="shopping-item ${i.checked ? 'checked' : ''}">
-                        <div onclick="toggleShopItem(${i.id})" style="flex:1; display:flex; align-items:center; gap:10px;">
-                            <i class="fas ${i.checked ? 'fa-check-square' : 'fa-square'}" style="color:var(--primary);"></i><span>${i.name}</span>
-                        </div>
-                        <div class="shop-actions">
-                            <button class="btn-buy" onclick="buyShopItem(${i.id})">Comprar</button>
-                            <button class="btn-small" onclick="deleteShopItem(${i.id})"><i class="fas fa-trash"></i></button>
-                        </div>
-                    </div>`;
-                    container.innerHTML += div;
-                });
+            const items = data.expenses[data.currentMonth] || [];
+            if (items.length === 0) {
+                empty.style.display = 'block';
+                document.getElementById('expenseTable').style.display = 'none';
+                return;
             }
+
+            empty.style.display = 'none';
+            document.getElementById('expenseTable').style.display = 'table';
+
+            items.forEach((item, idx) => {
+                const row = `<tr>
+                    <td>${item.category}</td>
+                    <td>${item.description}</td>
+                    <td>${formatCurrency(item.amount)}</td>
+                    <td>${item.type === 'once' ? '📅' : '🔄'}</td>
+                    <td><button class="btn-small" onclick="deleteExpense(${idx})">🗑️</button></td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
         }
 
         function renderGoals() {
             const container = document.getElementById('goalsContainer');
             const empty = document.getElementById('goalsEmpty');
             container.innerHTML = '';
-            if (data.goals.length === 0) { empty.style.display = 'block'; }
-            else { empty.style.display = 'none';
-                data.goals.forEach(g => {
-                    const percent = Math.min((g.savedAmount / g.targetAmount) * 100, 100);
-                    const card = `<div class="goal-card ${percent >= 100 ? 'completed' : ''}">
-                        <div class="goal-header"><div class="goal-name">${g.name}</div><div class="goal-status">${percent.toFixed(0)}%</div></div>
-                        <div class="progress-bar"><div class="progress-fill" style="width:${percent}%"></div></div>
-                        <div class="goal-amounts"><div class="goal-amount"><div>Ahorrado</div><div>${formatCurrency(g.savedAmount)}</div></div><div class="goal-amount"><div>Meta</div><div>${formatCurrency(g.targetAmount)}</div></div></div>
-                        <div class="goal-buttons"><button onclick="addToGoal('${g.id}')">Ahorrar</button><button class="danger btn-small" onclick="deleteGoal('${g.id}')"><i class="fas fa-trash"></i></button></div>
-                    </div>`;
-                    container.innerHTML += card;
-                });
+
+            const goalList = Object.entries(data.goals);
+            if (goalList.length === 0) {
+                empty.style.display = 'block';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            goalList.forEach(([id, goal]) => {
+                const currentSaved = data.goalsHistory[id]?.[data.currentMonth] || 0;
+                const totalSaved = Object.values(data.goalsHistory[id] || {}).reduce((a, b) => a + b, 0);
+                const percent = Math.min((totalSaved / goal.targetAmount) * 100, 100);
+
+                const card = `<div class="goal-card ${percent >= 100 ? 'completed' : ''}">
+                    <div class="goal-header">
+                        <div class="goal-name">${goal.name}</div>
+                        <div class="goal-status">${percent.toFixed(0)}%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${percent}%"></div>
+                    </div>
+                    <div class="goal-amounts">
+                        <div class="goal-amount">
+                            <div class="goal-amount-label">Ahorrado</div>
+                            <div class="goal-amount-value">${formatCurrency(totalSaved)}</div>
+                        </div>
+                        <div class="goal-amount">
+                            <div class="goal-amount-label">Objetivo</div>
+                            <div class="goal-amount-value">${formatCurrency(goal.targetAmount)}</div>
+                        </div>
+                        <div class="goal-amount">
+                            <div class="goal-amount-label">Este mes</div>
+                            <div class="goal-amount-value">${formatCurrency(currentSaved)}</div>
+                        </div>
+                    </div>
+                    <div class="goal-buttons">
+                        <button onclick="addToGoal('${id}')">+ Ahorrar 💾</button>
+                        <button class="danger btn-small" onclick="deleteGoal('${id}')">🗑️</button>
+                    </div>
+                </div>`;
+                container.innerHTML += card;
+            });
+        }
+
+        // 🚀 MEJORA 8: Guardado con error handling
+        function saveData() {
+            try {
+                const dataStr = JSON.stringify(data);
+                localStorage.setItem('financialData', dataStr);
+            } catch (error) {
+                if (error.name === 'QuotaExceededError') {
+                    showNotification('⚠️ Almacenamiento lleno, limpiando...');
+                    localStorage.clear();
+                    localStorage.setItem('financialData', JSON.stringify(data));
+                } else {
+                    console.error('Error guardando datos:', error);
+                }
             }
         }
 
-        function renderGoalsProgress() {
-            const container = document.getElementById('goalsProgress');
-            const empty = document.getElementById('goalsProgressEmpty');
-            container.innerHTML = '';
-            if (data.goals.length === 0) { empty.style.display = 'block'; }
-            else { empty.style.display = 'none';
-                data.goals.forEach(g => {
-                    const percent = Math.min((g.savedAmount / g.targetAmount) * 100, 100);
-                    if(percent < 100) {
-                        container.innerHTML += `<div style="margin-bottom:10px; background:white; padding:10px; border-radius:10px;"><div style="display:flex; justify-content:space-between; font-size:0.9em; font-weight:700; margin-bottom:5px;"><span>${g.name}</span><span>${percent.toFixed(0)}%</span></div><div class="progress-bar" style="height:6px; margin:0;"><div class="progress-fill" style="width:${percent}%"></div></div></div>`;
-                    }
-                });
+        function loadData() {
+            try {
+                const saved = localStorage.getItem('financialData');
+                if (saved) {
+                    data = JSON.parse(saved);
+                }
+            } catch (error) {
+                console.error('Error cargando datos:', error);
+                showNotification('⚠️ Error cargando datos, usando valores por defecto');
             }
         }
-
-        // --- ANIMATIONS & EXTRAS ---
-        function showBearFeedback(type) {
-            const overlay = document.getElementById('bearOverlay');
-            const img = document.getElementById('bearAnimImg');
-            const backup = document.getElementById('bearEmojiBackup');
-            overlay.classList.add('show');
-            if (type === 'happy') { img.src = './happy.gif'; backup.textContent = '🐻🎉'; }
-            else { img.src = './sad.gif'; backup.textContent = '🐻💧'; }
-            img.onload = () => { img.style.display = 'block'; backup.style.display = 'none'; };
-            img.onerror = () => { img.style.display = 'none'; backup.style.display = 'block'; };
-            setTimeout(() => { overlay.classList.remove('show'); setTimeout(() => { img.style.display='none'; backup.style.display='none'; }, 300); }, 2500);
-        }
-
-        function createConfetti() { const colors = ['#7BA8A8','#9BC997','#F5D5A8','#FF9F9F']; for(let i=0;i<60;i++){ const c = document.createElement('div'); c.className = 'confetti'; c.textContent = '★'; c.style.left = Math.random()*window.innerWidth+'px'; c.style.top = '-20px'; c.style.color = colors[Math.floor(Math.random()*colors.length)]; document.body.appendChild(c); setTimeout(()=>c.remove(),3000); } }
-        function showCelebration(msg) { createConfetti(); const div = document.createElement('div'); div.className = 'celebration-overlay'; div.innerHTML = `<div class="celebration-message">${msg}</div>`; document.body.appendChild(div); setTimeout(()=>div.remove(),3000); }
 
         initApp();
     </script>
