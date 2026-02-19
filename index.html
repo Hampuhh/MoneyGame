@@ -50,7 +50,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg);
-            /* FONDO DE LA APP (Paisaje) */
+            /* FONDO DE LA APP */
             background-image: url('./fondo.png');
             background-size: cover;
             background-position: center;
@@ -73,37 +73,29 @@
             padding-bottom: 120px;
         }
 
-        /* --- HEADER COMO BANNER DE FONDO --- */
+        /* --- HEADER --- */
         header {
-            /* Aquí configuramos la imagen banner.png como fondo */
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./banner.png');
-            background-size: cover; /* La imagen cubre todo el espacio */
-            background-position: center; /* Centrada */
-            
+            background-size: cover;
+            background-position: center;
             border-radius: 24px;
-            /* Más altura para que se vea bien la imagen */
             padding: 40px 20px; 
             margin-bottom: 20px;
-            
-            /* Sombra y borde */
             box-shadow: 0 10px 25px rgba(0,0,0, 0.15);
             border: 2px solid rgba(255,255,255,0.6);
-            
-            /* Alineación del texto */
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Texto centrado */
+            align-items: center;
             text-align: center;
         }
 
         .header-text h1 {
             font-family: 'Fredoka One', cursive;
-            font-size: 2.2em; /* Texto más grande */
-            color: #FFFFFF; /* Texto blanco para contraste */
+            font-size: 2.2em;
+            color: #FFFFFF;
             line-height: 1;
             margin-bottom: 5px;
-            /* Sombra fuerte para que se lea sobre cualquier imagen */
             text-shadow: 0px 2px 4px rgba(0,0,0,0.6); 
         }
         
@@ -113,8 +105,8 @@
             font-weight: 600;
             text-shadow: 0px 1px 2px rgba(0,0,0,0.6);
         }
-        /* ---------------------------------- */
 
+        /* --- RESTO DEL CSS --- */
         .month-selector {
             background: rgba(255, 255, 255, 0.95);
             padding: 10px 14px;
@@ -556,7 +548,7 @@
         }
 
         @media (max-width: 380px) {
-            header h1 { font-size: 1.8em; }
+            header h1 { font-size: 1.5em; }
             .stat-value { font-size: 1.2em; }
         }
     </style>
@@ -733,7 +725,6 @@
 
     <script>
         let data = {
-            currency: 'CLP',
             currentMonth: new Date().toISOString().slice(0, 7),
             incomeDate: null,
             income: {},
@@ -742,18 +733,9 @@
             goalsHistory: {}
         };
 
-        const currencySymbols = { 'CLP': '$', 'USD': '$' };
-        const currencyRates = { 'CLP': 1, 'USD': 850 };
-
         function initApp() {
             document.getElementById('monthInput').value = data.currentMonth;
             loadData();
-            render();
-        }
-
-        function changeCurrency(currency) {
-            data.currency = currency;
-            saveData();
             render();
         }
 
@@ -782,9 +764,10 @@
             document.getElementById('expenseType').value = type;
         }
 
+        // --- SOLUCIÓN DEL ERROR ---
+        // Ya no tratamos de convertir monedas. Se asume todo es CLP.
         function formatCurrency(amount) {
-            const converted = amount / currencyRates[data.currency];
-            return currencySymbols[data.currency] + converted.toLocaleString('es-CL', { maximumFractionDigits: 0 });
+            return '$' + amount.toLocaleString('es-CL', { maximumFractionDigits: 0 });
         }
 
         function addIncome() {
