@@ -9,8 +9,8 @@
     <meta name="theme-color" content="#7BA8A8">
     <meta name="description" content="Controla tu dinero, alcanza tus metas">
     
-    <link rel="apple-touch-icon" href="./banner.png">
-    <link rel="icon" type="image/png" href="./banner.png">
+    <link rel="apple-touch-icon" href="./icon.png">
+    <link rel="icon" type="image/png" href="./icon.png">
     
     <title>The Money Game 🐻</title>
     <style>
@@ -73,7 +73,7 @@
             padding-bottom: 120px;
         }
 
-        /* --- HEADER --- */
+        /* --- HEADER (Usa banner.png que puede ser rectangular) --- */
         header {
             background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('./banner.png');
             background-size: cover;
@@ -725,6 +725,7 @@
 
     <script>
         let data = {
+            currency: 'CLP',
             currentMonth: new Date().toISOString().slice(0, 7),
             incomeDate: null,
             income: {},
@@ -733,9 +734,18 @@
             goalsHistory: {}
         };
 
+        const currencySymbols = { 'CLP': '$', 'USD': '$' };
+        const currencyRates = { 'CLP': 1, 'USD': 850 };
+
         function initApp() {
             document.getElementById('monthInput').value = data.currentMonth;
             loadData();
+            render();
+        }
+
+        function changeCurrency(currency) {
+            data.currency = currency;
+            saveData();
             render();
         }
 
@@ -764,9 +774,8 @@
             document.getElementById('expenseType').value = type;
         }
 
-        // --- SOLUCIÓN DEL ERROR ---
-        // Ya no tratamos de convertir monedas. Se asume todo es CLP.
         function formatCurrency(amount) {
+            // Formato CLP directo
             return '$' + amount.toLocaleString('es-CL', { maximumFractionDigits: 0 });
         }
 
