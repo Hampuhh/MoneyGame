@@ -8,13 +8,14 @@
     <meta name="apple-mobile-web-app-title" content="Money Game">
     <meta name="theme-color" content="#7BA8A8">
     <meta name="description" content="Controla tu dinero, alcanza tus metas">
+    
     <link rel="apple-touch-icon" href="http://googleusercontent.com/image_generation_content/3">
     <link rel="icon" type="image/png" href="http://googleusercontent.com/image_generation_content/3">
     
     <title>Money Game 🐻</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'); /* Fuente más 'cute' para títulos */
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
         * {
             margin: 0;
@@ -49,7 +50,6 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg);
-            /* Imagen de fondo suave */
             background-image: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/9ca668e1-5d2f-4870-976a-6da03921928e');
             background-size: cover;
             background-position: center;
@@ -72,9 +72,9 @@
             padding-bottom: 120px;
         }
 
-        /* --- NUEVO ESTILO DEL HEADER --- */
+        /* HEADER */
         header {
-            background: rgba(255, 255, 255, 0.95); /* Fondo más limpio */
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 15px 20px;
             margin-bottom: 20px;
@@ -103,7 +103,7 @@
         }
 
         .header-text h1 {
-            font-family: 'Fredoka One', cursive; /* Fuente más amigable */
+            font-family: 'Fredoka One', cursive;
             font-size: 1.6em;
             color: var(--primary-dark);
             line-height: 1.1;
@@ -128,7 +128,6 @@
             font-family: 'Poppins';
             outline: none;
         }
-        /* ------------------------------- */
 
         .month-selector {
             background: var(--surface);
@@ -167,9 +166,9 @@
             border-radius: 16px;
             padding: 4px;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Ocultar scrollbar Firefox */
+            scrollbar-width: none;
         }
-        .tabs::-webkit-scrollbar { display: none; } /* Ocultar scrollbar Chrome/Safari */
+        .tabs::-webkit-scrollbar { display: none; }
 
         .tab-btn {
             padding: 10px 16px;
@@ -218,7 +217,7 @@
             background: #FFFFFF;
             border-radius: 16px;
             padding: 16px;
-            border: none; /* Quitamos borde duro */
+            border: none;
             text-align: center;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
             position: relative;
@@ -381,7 +380,7 @@
         table {
             width: 100%;
             border-collapse: separate;
-            border-spacing: 0 8px; /* Espacio entre filas */
+            border-spacing: 0 8px;
             margin-bottom: 14px;
             font-size: 0.9em;
         }
@@ -521,7 +520,7 @@
             flex: 1;
         }
 
-        /* Animaciones de celebración */
+        /* Animaciones */
         @keyframes confetti-fall {
             0% { opacity: 1; transform: translateY(0) rotateZ(0deg); }
             100% { opacity: 0; transform: translateY(600px) rotateZ(720deg); }
@@ -610,8 +609,8 @@
                     <div class="stat-value" id="totalExpense">$0</div>
                 </div>
                 <div class="stat-card savings">
-                    <div class="stat-label">Ahorros</div>
-                    <div class="stat-value" id="totalSavings">$0</div>
+                    <div class="stat-label">Ahorrado Mes</div>
+                    <div class="stat-value" id="totalAllocated">$0</div>
                 </div>
                 <div class="stat-card available" id="availableCard">
                     <div class="stat-label">Disponible</div>
@@ -624,7 +623,7 @@
                     <div class="crisis-badge">⚠️ ALERTA</div>
                     <div class="stat-label">¡CUIDADO!</div>
                     <div class="stat-value" style="font-size: 1.2em;">Bajos Fondos</div>
-                    <p style="font-size: 0.85em; color: var(--crisis); margin-top: 8px; line-height: 1.4;">Te queda menos del 25% de tu ingreso mensual.</p>
+                    <p style="font-size: 0.85em; color: var(--crisis); margin-top: 8px; line-height: 1.4;">Te queda menos del 20% de tu dinero disponible.</p>
                 </div>
             </div>
 
@@ -787,7 +786,6 @@
 
         function formatCurrency(amount) {
             const converted = amount / currencyRates[data.currency];
-            // Formato chileno sin decimales para CLP
             return currencySymbols[data.currency] + converted.toLocaleString('es-CL', { maximumFractionDigits: 0 });
         }
 
@@ -809,7 +807,6 @@
             document.getElementById('incomeAmount').value = '';
             saveData();
             render();
-            // Ir al dashboard automáticamente
             document.querySelector('.tab-btn.active').click(); 
         }
 
@@ -893,12 +890,11 @@
             setTimeout(() => overlay.remove(), 3000);
         }
 
-        function checkCrisis() {
-            const { income, expenses } = calculateTotals();
+        function checkCrisis(available, income) {
             if (income === 0) return false;
-            const available = income - expenses;
+            // Alerta si queda menos del 20% del ingreso
             const percentAvailable = (available / income) * 100;
-            return percentAvailable < 20 && available > 0; // Alerta si queda menos del 20%
+            return percentAvailable < 20 && available >= 0; 
         }
 
         function addToGoal(goalId) {
@@ -924,31 +920,49 @@
             }
         }
 
+        // --- LÓGICA ACTUALIZADA DE CÁLCULO ---
         function calculateTotals() {
-            let income = 0, expenses = 0;
+            let income = 0, expenses = 0, allocatedSavings = 0;
+
+            // 1. Sumar Ingresos
             if (data.income[data.currentMonth]) {
                 data.income[data.currentMonth].forEach(i => income += i.amount);
             }
+
+            // 2. Sumar Gastos
             if (data.expenses[data.currentMonth]) {
                 data.expenses[data.currentMonth].forEach(e => expenses += e.amount);
             }
-            const savings = income - expenses;
-            return { income, expenses, savings };
+
+            // 3. Sumar dinero enviado a METAS este mes
+            // Recorremos todas las metas y vemos cuánto se puso en el mes actual
+            Object.keys(data.goalsHistory).forEach(goalId => {
+                if (data.goalsHistory[goalId][data.currentMonth]) {
+                    allocatedSavings += data.goalsHistory[goalId][data.currentMonth];
+                }
+            });
+
+            return { income, expenses, allocatedSavings };
         }
 
         function render() {
-            const { income, expenses, savings } = calculateTotals();
-            const available = income - expenses;
+            const { income, expenses, allocatedSavings } = calculateTotals();
+            
+            // FÓRMULA CORREGIDA: Disponible = Ingresos - Gastos - Lo ahorrado en metas
+            const available = income - expenses - allocatedSavings;
 
             document.getElementById('totalIncome').textContent = formatCurrency(income);
             document.getElementById('totalExpense').textContent = formatCurrency(expenses);
-            document.getElementById('totalSavings').textContent = formatCurrency(savings); // En dashboard simple es lo mismo que disp.
+            
+            // Actualizamos la tarjeta para mostrar lo AHORRADO EN METAS
+            document.getElementById('totalAllocated').textContent = formatCurrency(allocatedSavings);
+            
             document.getElementById('totalAvailable').textContent = formatCurrency(available);
 
             const availableCard = document.getElementById('availableCard');
             const crisisAlert = document.getElementById('crisisAlert');
 
-            if (checkCrisis()) {
+            if (checkCrisis(available, income)) {
                 availableCard.classList.add('crisis');
                 crisisAlert.style.display = 'block';
             } else {
@@ -1050,7 +1064,6 @@
             }
         }
 
-        // Renderizado simple para el Dashboard
         function renderGoalsProgress() {
             const container = document.getElementById('goalsProgress');
             const empty = document.getElementById('goalsProgressEmpty');
@@ -1065,7 +1078,7 @@
                     const totalSaved = Object.values(data.goalsHistory[id] || {}).reduce((a, b) => a + b, 0);
                     const percent = Math.min((totalSaved / goal.targetAmount) * 100, 100);
                     
-                    if (percent < 100) { // Solo mostrar en progreso
+                    if (percent < 100) {
                          const item = `<div style="margin-bottom:10px; background:white; padding:10px; border-radius:10px;">
                             <div style="display:flex; justify-content:space-between; font-size:0.9em; font-weight:700; margin-bottom:5px;">
                                 <span>${goal.name}</span>
@@ -1089,7 +1102,6 @@
             const saved = localStorage.getItem('financialData');
             if (saved) {
                 data = JSON.parse(saved);
-                // Migración simple si faltan campos
                 if(!data.goalsHistory) data.goalsHistory = {};
             }
         }
