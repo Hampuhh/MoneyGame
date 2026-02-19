@@ -9,8 +9,8 @@
     <meta name="theme-color" content="#7BA8A8">
     <meta name="description" content="Controla tu dinero, alcanza tus metas">
     
-    <link rel="apple-touch-icon" href="http://googleusercontent.com/image_generation_content/3">
-    <link rel="icon" type="image/png" href="http://googleusercontent.com/image_generation_content/3">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" type="image/png" href="logo.png">
     
     <title>Money Game 🐻</title>
     <style>
@@ -116,17 +116,21 @@
             font-weight: 600;
         }
 
+        /* ESTILO ACTUALIZADO: Selector más pequeño */
         .currency-selector {
             background: var(--primary-light);
-            border: 2px solid var(--primary);
-            border-radius: 12px;
-            padding: 8px 12px;
+            border: 1px solid var(--primary); /* Borde más fino */
+            border-radius: 8px; /* Bordes menos redondeados */
+            padding: 4px 8px; /* Menos relleno */
             color: var(--primary-dark);
-            font-size: 0.9em;
+            font-size: 0.75em; /* Letra más pequeña */
             font-weight: 700;
             cursor: pointer;
             font-family: 'Poppins';
             outline: none;
+            height: fit-content; /* Se ajusta al contenido */
+            align-self: flex-start; /* Se alinea arriba para no estorbar */
+            margin-top: 5px;
         }
 
         .month-selector {
@@ -574,7 +578,7 @@
     <div class="container">
         <header>
             <div class="header-left">
-                <img src="http://googleusercontent.com/image_generation_content/3" alt="Logo Oso" class="header-logo">
+                <img src="logo.png" alt="Logo Oso" class="header-logo">
                 <div class="header-text">
                     <h1>Money Game</h1>
                     <p>Just do it ✨</p>
@@ -688,7 +692,7 @@
                         <option value="Hogar">🏠 Hogar / Cuentas</option>
                         <option value="Gustitos">💖 Gustitos</option>
                         <option value="Salud">💊 Salud</option>
-                        <option value="Suscripciones">📺 Streaming</option>
+                        <option value="Suscripciones">📺 Suscripciones</option>
                         <option value="Otro">📌 Otro</option>
                     </select>
                 </div>
@@ -892,7 +896,6 @@
 
         function checkCrisis(available, income) {
             if (income === 0) return false;
-            // Alerta si queda menos del 20% del ingreso
             const percentAvailable = (available / income) * 100;
             return percentAvailable < 20 && available >= 0; 
         }
@@ -920,22 +923,17 @@
             }
         }
 
-        // --- LÓGICA ACTUALIZADA DE CÁLCULO ---
         function calculateTotals() {
             let income = 0, expenses = 0, allocatedSavings = 0;
 
-            // 1. Sumar Ingresos
             if (data.income[data.currentMonth]) {
                 data.income[data.currentMonth].forEach(i => income += i.amount);
             }
 
-            // 2. Sumar Gastos
             if (data.expenses[data.currentMonth]) {
                 data.expenses[data.currentMonth].forEach(e => expenses += e.amount);
             }
 
-            // 3. Sumar dinero enviado a METAS este mes
-            // Recorremos todas las metas y vemos cuánto se puso en el mes actual
             Object.keys(data.goalsHistory).forEach(goalId => {
                 if (data.goalsHistory[goalId][data.currentMonth]) {
                     allocatedSavings += data.goalsHistory[goalId][data.currentMonth];
@@ -947,16 +945,11 @@
 
         function render() {
             const { income, expenses, allocatedSavings } = calculateTotals();
-            
-            // FÓRMULA CORREGIDA: Disponible = Ingresos - Gastos - Lo ahorrado en metas
             const available = income - expenses - allocatedSavings;
 
             document.getElementById('totalIncome').textContent = formatCurrency(income);
             document.getElementById('totalExpense').textContent = formatCurrency(expenses);
-            
-            // Actualizamos la tarjeta para mostrar lo AHORRADO EN METAS
             document.getElementById('totalAllocated').textContent = formatCurrency(allocatedSavings);
-            
             document.getElementById('totalAvailable').textContent = formatCurrency(available);
 
             const availableCard = document.getElementById('availableCard');
