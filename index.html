@@ -52,14 +52,8 @@
         .header-text h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; color: #FFFFFF; line-height: 1; margin-bottom: 5px; text-shadow: 0px 2px 4px rgba(0,0,0,0.6); }
         .header-text p { font-size: 0.9em; color: rgba(255, 255, 255, 0.9); font-weight: 600; text-shadow: 0px 1px 2px rgba(0,0,0,0.6); }
 
-        /* MENÚ DE CASILLAS (GRID) */
-        .tabs { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px; 
-            margin-bottom: 20px; 
-        }
-        
+        /* MENÚ TIPO CASILLA (GRID) */
+        .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
         .tab-btn { 
             padding: 8px; border: none; background: rgba(255, 255, 255, 0.9); cursor: pointer; color: var(--text); 
             border-radius: 12px; transition: all 0.1s; font-family: 'Poppins'; font-weight: 600; font-size: 0.75em; 
@@ -86,11 +80,13 @@
         .stat-card.expense::after { background: var(--danger); }
         .stat-card.savings::after { background: var(--warning); }
         .stat-card.available::after { background: var(--primary); }
+        
         .stat-card.crisis { border: 2px solid var(--crisis); background: #FFF5F5; }
         .stat-label { color: var(--text-light); font-size: 0.75em; margin-bottom: 6px; text-transform: uppercase; font-weight: 600; }
         .stat-value { font-size: 1.4em; font-weight: 800; color: var(--text); }
         .stat-card.income .stat-value { color: var(--success); }
         .stat-card.expense .stat-value { color: var(--danger); }
+        
         .crisis-badge { position: absolute; top: 8px; right: 8px; background: var(--crisis); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.65em; font-weight: 700; }
 
         h2 { font-family: 'Fredoka One', cursive; font-size: 1.3em; margin: 20px 0 12px 0; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; text-shadow: 1px 1px 0px rgba(255,255,255,0.8); }
@@ -115,7 +111,7 @@
         td { padding: 12px 10px; background: rgba(255, 255, 255, 0.95); font-size: 0.9em; border-radius: 10px; }
         .btn-small { padding: 6px 10px; font-size: 0.8em; width: auto; background: #FFE0E0; color: #D65A5A; box-shadow: none; }
 
-        /* Sections */
+        /* Debts */
         .debt-card { background: white; border-radius: 14px; padding: 12px; margin-bottom: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; border-left: 5px solid #ccc; position: relative; }
         .debt-card.owe { border-left-color: var(--danger); } .debt-card.owed { border-left-color: var(--success); }
         .debt-card.paid { opacity: 0.6; border-left-color: #ccc; background: #f9f9f9; text-decoration: line-through; }
@@ -125,11 +121,13 @@
         .debt-actions { display: flex; gap: 5px; }
         .btn-check { background: var(--success); color: white; padding: 6px; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
 
+        /* Shopping */
         .shopping-item { background: white; border-radius: 12px; padding: 12px; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
         .shopping-item.checked { opacity: 0.6; background: #F0F4F4; text-decoration: line-through; color: var(--text-light); }
         .shop-actions { display: flex; gap: 8px; }
         .btn-buy { background: var(--primary); color: white; border-radius: 8px; padding: 5px 10px; font-size: 0.8em; font-weight: 600; }
 
+        /* Goals */
         .goal-card { background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 16px; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); border: 1px solid transparent; }
         .goal-card.completed { border-color: var(--success); background: #F6FFF6; }
         .goal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
@@ -214,14 +212,15 @@
                     <div class="stat-value" id="totalAvailable">$0</div>
                 </div>
             </div>
+            
             <div id="crisisAlert" style="display: none;">
                 <div class="stat-card crisis">
                     <div class="crisis-badge">⚠️ ALERTA</div>
-                    <div class="stat-label">¡CUIDADO!</div>
-                    <div class="stat-value" style="font-size: 1.2em;">Bajos Fondos</div>
-                    <p style="font-size: 0.85em; color: var(--crisis); margin-top: 8px;">Te queda menos del 20%</p>
+                    <div class="stat-value" style="font-size: 1.1em; margin-bottom:5px;">¡PELIGRO!</div>
+                    <p style="font-size: 0.85em; color: var(--crisis); line-height: 1.3;">Estás a punto de entrar en crisis financiera (Queda menos del 20%)</p>
                 </div>
             </div>
+            
             <h2><i class="fas fa-trophy"></i> Progreso de Metas</h2>
             <div id="goalsProgress"></div>
             <div id="goalsProgressEmpty" class="empty-state" style="display:none;"><p>No hay metas activas.</p></div>
@@ -348,30 +347,25 @@
 
         // --- CORE RECURRENCE LOGIC (AUTO-COPY) ---
         function checkRecurring() {
-            const currentMonthKey = data.currentMonth; // "2026-02"
-            
-            // 1. Encontrar todas las transacciones que son recurrentes y son de meses pasados
+            const currentMonthKey = data.currentMonth; 
             const templates = data.transactions.filter(t => t.isRecurring && t.date < (currentMonthKey + '-01'));
 
             let changes = false;
             templates.forEach(template => {
-                // 2. Verificar si ya existe una copia en el mes actual (mismo nombre y tipo)
                 const exists = data.transactions.some(t => 
                     t.date.startsWith(currentMonthKey) && 
                     t.description === template.description && 
                     t.type === template.type
                 );
 
-                // 3. Si no existe, crearla
                 if (!exists) {
-                    const newTx = { ...template }; // Copiar datos
-                    newTx.id = Date.now() + Math.random(); // Nuevo ID único
-                    newTx.date = currentMonthKey + '-01'; // Fecha del mes actual
+                    const newTx = { ...template }; 
+                    newTx.id = Date.now() + Math.random(); 
+                    newTx.date = currentMonthKey + '-01'; 
                     data.transactions.push(newTx);
                     changes = true;
                 }
             });
-            
             if (changes) saveData();
         }
 
@@ -390,7 +384,7 @@
 
         function changeMonth(month) { 
             data.currentMonth = month; 
-            checkRecurring(); // Check for recurring items when changing month
+            checkRecurring(); 
             render(); 
         }
 
@@ -416,7 +410,7 @@
                     console.error("Datos corruptos", e);
                 }
             }
-            checkRecurring(); // Check on load too
+            checkRecurring(); 
         }
 
         // --- LOGIC ---
@@ -469,8 +463,13 @@
                 if (goal) {
                     goal.savedAmount += amount;
                     saveData(); render();
-                    showBearFeedback('happy');
-                    if (goal.savedAmount >= goal.targetAmount) showCelebration('🎉 ¡Meta Cumplida!');
+                    
+                    if (goal.savedAmount >= goal.targetAmount) {
+                        showCelebration('✨ ¡Felicidades! Meta Alcanzada 🏆');
+                        showBearFeedback('happy');
+                    } else {
+                        showBearFeedback('happy');
+                    }
                 }
             }
         }
@@ -502,6 +501,11 @@
             if (debt) {
                 debt.status = debt.status === 'pending' ? 'paid' : 'pending';
                 saveData(); render();
+                // RESTAURADO: Mensaje de deuda pagada
+                if(debt.status === 'paid') {
+                    showCelebration('¡Deuda Pagada!! 🎉');
+                    showBearFeedback('happy');
+                }
             }
         }
 
@@ -652,7 +656,7 @@
             empty.style.display = hasActive ? 'none' : 'block';
         }
 
-        // --- UI HELPERS ---
+        // --- HELPERS UI ---
         function setIncomeType(btn, type) {
             btn.parentElement.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
