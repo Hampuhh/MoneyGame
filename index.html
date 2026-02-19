@@ -139,14 +139,26 @@
         .goal-buttons { display: flex; gap: 10px; margin-top: 10px; }
         .goal-buttons button:first-child { flex: 2; } .goal-buttons button:last-child { flex: 1; }
 
-        /* Overlays */
+        /* Overlays & Animations */
         #bearOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
         #bearOverlay.show { opacity: 1; }
-        .bear-anim-img { width: 300px; height: 300px; object-fit: contain; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2)); }
         
+        #bearEmoji { font-size: 140px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3)); }
+        
+        .anim-bounce { animation: bounce 0.6s infinite alternate; }
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-30px); } }
+        
+        .anim-shake { animation: shake 0.5s infinite; }
+        @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-10px) rotate(-5deg); } 75% { transform: translateX(10px) rotate(5deg); } 100% { transform: translateX(0); } }
+
         .celebration-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2000; }
         .celebration-message { background: white; color: var(--text); padding: 30px; border-radius: 20px; font-size: 1.5em; font-weight: 800; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2); animation: popUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); font-family: 'Fredoka One', cursive; }
         @keyframes popUp { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
+        
+        /* Confetti */
+        @keyframes confetti-fall { 0% { opacity: 1; transform: translateY(0) rotateZ(0deg); } 100% { opacity: 0; transform: translateY(600px) rotateZ(720deg); } }
+        .confetti { position: fixed; pointer-events: none; animation: confetti-fall 3s ease-in forwards; z-index: 9999; }
+
         .empty-state { text-align: center; padding: 40px 16px; background: rgba(255, 255, 255, 0.8); border-radius: 16px; margin-top: 10px; }
         .empty-state-icon { font-size: 3em; margin-bottom: 12px; opacity: 0.6; color: var(--primary); }
 
@@ -155,8 +167,7 @@
 </head>
 <body>
     <div id="bearOverlay">
-        <img id="bearAnimImg" class="bear-anim-img" src="" alt="Bear" style="display:none;">
-        <div id="bearEmojiBackup" style="font-size: 100px; display:none;"></div>
+        <div id="bearEmoji"></div>
     </div>
 
     <div class="container">
@@ -675,17 +686,29 @@
 
         function showBearFeedback(type) {
             const overlay = document.getElementById('bearOverlay');
-            const img = document.getElementById('bearAnimImg');
-            const back = document.getElementById('bearEmojiBackup');
+            const emojiDiv = document.getElementById('bearEmoji');
             overlay.classList.add('show');
-            if(type === 'happy') { img.src = './happy.gif'; back.textContent = '🐻🎉'; }
-            else { img.src = './sad.gif'; back.textContent = '🐻💧'; }
-            img.onload = () => { img.style.display = 'block'; back.style.display = 'none'; };
-            img.onerror = () => { img.style.display = 'none'; back.style.display = 'block'; };
-            setTimeout(() => overlay.classList.remove('show'), 2500);
+            
+            if(type === 'happy') {
+                emojiDiv.textContent = '🐻🎉';
+                emojiDiv.className = 'anim-bounce';
+            } else {
+                emojiDiv.textContent = '🐻💧';
+                emojiDiv.className = 'anim-shake';
+            }
+            
+            setTimeout(() => { overlay.classList.remove('show'); }, 2000);
         }
 
         function showCelebration(msg) {
+            const colors = ['#7BA8A8', '#9BC997', '#F5D5A8', '#FF9F9F'];
+            // Confetti
+            for(let i=0;i<60;i++){ 
+                const c = document.createElement('div'); c.className = 'confetti'; c.textContent = '★'; 
+                c.style.left = Math.random()*window.innerWidth+'px'; c.style.top = '-20px'; c.style.color = colors[Math.floor(Math.random()*colors.length)]; 
+                document.body.appendChild(c); setTimeout(()=>c.remove(),3000); 
+            }
+            // Message
             const div = document.createElement('div');
             div.className = 'celebration-overlay';
             div.innerHTML = `<div class="celebration-message">${msg}</div>`;
