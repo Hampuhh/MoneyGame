@@ -1,0 +1,17 @@
+{
+  "name": "Money Game 🐻",
+  "short_name": "MoneyGame",
+  "description": "Controla tus finanzas y alcanza tus metas",
+  "start_url": "./money-game.html",
+  "display": "standalone",
+  "background_color": "#FBF6F0",
+  "theme_color": "#7BA8A8",
+  "icons": [
+    {
+      "src": "https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/d52c9624-fd92-417d-852a-10b733c72fd5",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
