@@ -52,27 +52,60 @@
         .header-text h1 { font-family: 'Fredoka One', cursive; font-size: 2.2em; color: #FFFFFF; line-height: 1; margin-bottom: 5px; text-shadow: 0px 2px 4px rgba(0,0,0,0.6); }
         .header-text p { font-size: 0.9em; color: rgba(255, 255, 255, 0.9); font-weight: 600; text-shadow: 0px 1px 2px rgba(0,0,0,0.6); }
 
-        /* TABS */
-        .tabs { display: flex; gap: 10px; margin-bottom: 18px; overflow-x: auto; border-radius: 16px; padding: 4px; scrollbar-width: none; z-index: 10; position: relative; }
-        .tabs::-webkit-scrollbar { display: none; }
-        .tab-btn { 
-            padding: 10px 16px; border: none; background: rgba(255, 255, 255, 0.9); 
-            cursor: pointer; font-size: 0.85em; color: var(--text); border-radius: 12px; 
-            transition: all 0.2s; font-family: 'Poppins'; font-weight: 700; white-space: nowrap; 
-            border: 1px solid transparent; box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
-            display: flex; align-items: center; gap: 8px; flex-shrink: 0; 
+        /* --- NUEVO MENÚ TIPO CASILLA (GRID) --- */
+        .tabs { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+            gap: 8px; 
+            margin-bottom: 20px; 
         }
-        .tab-btn.active { background: var(--primary); color: white; box-shadow: 0 4px 12px rgba(123, 168, 168, 0.4); transform: translateY(-1px); }
+        
+        .tab-btn { 
+            padding: 8px; 
+            border: none; 
+            background: rgba(255, 255, 255, 0.9); 
+            cursor: pointer; 
+            color: var(--text); 
+            border-radius: 12px; 
+            transition: all 0.1s; 
+            font-family: 'Poppins'; 
+            font-weight: 600; 
+            font-size: 0.75em; /* Texto pequeño para que quepa */
+            border: 1px solid transparent; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+            
+            /* Alineación vertical (Icono arriba, texto abajo) */
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            height: 70px; /* Altura fija para que sean cuadrados */
+            gap: 5px;
+        }
+        
+        .tab-btn i {
+            font-size: 1.4em; /* Icono grande */
+            margin-bottom: 2px;
+        }
 
-        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-btn.active { 
+            background: var(--primary); 
+            color: white; 
+            box-shadow: 0 4px 12px rgba(123, 168, 168, 0.4); 
+            transform: translateY(-2px); 
+            font-weight: 700;
+        }
+
+        .tab-content { display: none; animation: fadeIn 0.2s ease-in-out; }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* UI COMPONENTS */
-        .month-selector { background: rgba(255, 255, 255, 0.95); padding: 10px 14px; border-radius: 12px; margin-bottom: 12px; display: flex; gap: 12px; align-items: center; border: 2px solid var(--border-color); backdrop-filter: blur(5px); }
+        /* MONTH SELECTOR */
+        .month-selector { background: rgba(255, 255, 255, 0.95); padding: 10px 14px; border-radius: 12px; margin-bottom: 15px; display: flex; gap: 12px; align-items: center; border: 2px solid var(--border-color); backdrop-filter: blur(5px); }
         .month-selector label { font-weight: 700; color: var(--primary); font-size: 1.2em; }
         .month-selector input { flex: 1; border: none; background: transparent; padding: 8px; font-family: 'Poppins'; font-size: 1em; font-weight: 600; }
 
+        /* CARDS & UI */
         .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
         .stat-card { background: rgba(255, 255, 255, 0.95); border-radius: 16px; padding: 16px; text-align: center; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06); position: relative; overflow: hidden; }
         .stat-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
@@ -338,13 +371,12 @@
                 render();
             } catch (error) {
                 console.error("Error al iniciar:", error);
-                alert("Hubo un error al iniciar la app. Se han reiniciado los datos por seguridad.");
-                localStorage.clear();
+                localStorage.clear(); // Reset if critical error
                 location.reload();
             }
         }
 
-        // --- NAVIGATION FIX ---
+        // --- NAVIGATION ---
         function switchTab(tabName, event) {
             // Ocultar todo
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
@@ -375,9 +407,8 @@
             if (saved) {
                 try {
                     const parsed = JSON.parse(saved);
-                    // Merge con defaults para evitar errores si faltan arrays
-                    data = { ...data, ...parsed };
-                    // Asegurar que existan los arrays
+                    data = { ...data, ...parsed }; // Merge
+                    // Ensure arrays exist
                     if(!Array.isArray(data.transactions)) data.transactions = [];
                     if(!Array.isArray(data.goals)) data.goals = [];
                     if(!Array.isArray(data.debts)) data.debts = [];
@@ -388,7 +419,7 @@
             }
         }
 
-        // --- LOGIC: TRANSACTIONS ---
+        // --- LOGIC ---
         function addTransaction(type) {
             const isIncome = type === 'income';
             const descId = isIncome ? 'incomeDescription' : 'expenseDescription';
@@ -403,22 +434,15 @@
             if (!desc || isNaN(amount)) return alert('Completa los campos');
 
             data.transactions.push({
-                id: Date.now(),
-                type,
-                amount,
-                description: desc,
-                category: cat,
-                isRecurring: freq === 'recurring',
-                date: data.currentMonth + '-01' 
+                id: Date.now(), type, amount, description: desc, category: cat, isRecurring: freq === 'recurring', date: data.currentMonth + '-01'
             });
 
             document.getElementById(descId).value = '';
             document.getElementById(amountId).value = '';
             
-            saveData();
-            render();
+            saveData(); render();
             showBearFeedback(isIncome ? 'happy' : 'sad');
-            if(isIncome) switchTab('dashboard', null); // Auto ir a dashboard si es ingreso
+            if(isIncome) switchTab('dashboard', null);
         }
 
         function deleteTransaction(id) {
@@ -428,7 +452,6 @@
             }
         }
 
-        // --- LOGIC: GOALS ---
         function addGoal() {
             const name = document.getElementById('goalName').value;
             const amount = parseFloat(document.getElementById('goalAmount').value);
@@ -445,8 +468,7 @@
                 const goal = data.goals.find(g => g.id === id);
                 if (goal) {
                     goal.savedAmount += amount;
-                    saveData(); render();
-                    showBearFeedback('happy');
+                    saveData(); render(); showBearFeedback('happy');
                     if (goal.savedAmount >= goal.targetAmount) showCelebration('🎉 ¡Meta Cumplida!');
                 }
             }
@@ -459,7 +481,6 @@
             }
         }
 
-        // --- LOGIC: DEBTS ---
         function addDebt() {
             const person = document.getElementById('debtPerson').value;
             const amount = parseFloat(document.getElementById('debtAmount').value);
@@ -490,7 +511,6 @@
             }
         }
 
-        // --- LOGIC: SHOPPING ---
         function addToShoppingList() {
             const item = document.getElementById('shopItem').value;
             if (!item) return;
@@ -524,7 +544,6 @@
 
         // --- RENDERERS ---
         function render() {
-            // Filtrar transacciones del mes
             const monthTx = data.transactions.filter(t => t.date.startsWith(data.currentMonth));
             
             let income = 0, expense = 0;
@@ -534,7 +553,7 @@
             });
 
             const totalSaved = data.goals.reduce((acc, g) => acc + g.savedAmount, 0);
-            const available = income - expense; // Simple cash flow
+            const available = income - expense;
 
             document.getElementById('totalIncome').textContent = formatCurrency(income);
             document.getElementById('totalExpense').textContent = formatCurrency(expense);
@@ -546,10 +565,7 @@
 
             renderTxList(monthTx.filter(t => t.type === 'income'), 'incomeBody', 'incomeEmpty', 'incomeTable');
             renderTxList(monthTx.filter(t => t.type === 'expense'), 'expenseBody', 'expenseEmpty', 'expenseTable');
-            renderGoals();
-            renderGoalsProgress();
-            renderDebts();
-            renderShopping();
+            renderGoals(); renderGoalsProgress(); renderDebts(); renderShopping();
         }
 
         function renderTxList(list, bodyId, emptyId, tableId) {
@@ -635,7 +651,7 @@
             empty.style.display = hasActive ? 'none' : 'block';
         }
 
-        // --- EXTRAS ---
+        // --- HELPERS UI ---
         function setIncomeType(btn, type) {
             btn.parentElement.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -673,6 +689,9 @@
         }
 
         // START
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(e => console.log(e)); });
+        }
         initApp();
     </script>
 </body>
