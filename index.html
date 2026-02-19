@@ -9,8 +9,8 @@
     <meta name="theme-color" content="#7BA8A8">
     <meta name="description" content="Controla tu dinero, alcanza tus metas">
     
-    <link rel="apple-touch-icon" href="logo.png">
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="./logo.png">
+    <link rel="icon" type="image/png" href="./logo.png">
     
     <title>Money Game 🐻</title>
     <style>
@@ -83,28 +83,35 @@
             border: 2px solid var(--primary-light);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 10px;
+            position: relative; /* Para posicionar el selector absoluto */
         }
 
         .header-left {
             display: flex;
             align-items: center;
             gap: 12px;
+            width: 100%;
         }
 
         .header-logo {
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            border: 3px solid var(--primary);
+            border: 2px solid var(--primary);
             object-fit: cover;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+
+        .header-backup-emoji {
+            font-size: 35px;
+            display: none; /* Se muestra solo si falla la imagen */
+            margin-right: 10px;
         }
 
         .header-text h1 {
             font-family: 'Fredoka One', cursive;
-            font-size: 1.6em;
+            font-size: 1.5em;
             color: var(--primary-dark);
             line-height: 1.1;
             margin-bottom: 2px;
@@ -116,21 +123,22 @@
             font-weight: 600;
         }
 
-        /* ESTILO ACTUALIZADO: Selector más pequeño */
+        /* SELECTOR DE MONEDA FLOTANTE */
         .currency-selector {
-            background: var(--primary-light);
-            border: 1px solid var(--primary); /* Borde más fino */
-            border-radius: 8px; /* Bordes menos redondeados */
-            padding: 4px 8px; /* Menos relleno */
-            color: var(--primary-dark);
-            font-size: 0.75em; /* Letra más pequeña */
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.8);
+            border: 1px solid var(--primary-light);
+            border-radius: 8px;
+            padding: 2px 6px;
+            color: var(--text-light);
+            font-size: 0.7em;
             font-weight: 700;
             cursor: pointer;
             font-family: 'Poppins';
             outline: none;
-            height: fit-content; /* Se ajusta al contenido */
-            align-self: flex-start; /* Se alinea arriba para no estorbar */
-            margin-top: 5px;
+            backdrop-filter: blur(4px);
         }
 
         .month-selector {
@@ -577,17 +585,20 @@
 <body>
     <div class="container">
         <header>
+            <select class="currency-selector" id="currencySelector" onchange="changeCurrency(this.value)">
+                <option value="CLP">CLP</option>
+                <option value="USD">USD</option>
+            </select>
+
             <div class="header-left">
-                <img src="logo.png" alt="Logo Oso" class="header-logo">
+                <img src="./logo.png" alt="Logo" class="header-logo" onerror="this.style.display='none'; document.getElementById('emojiBackup').style.display='block'">
+                <div id="emojiBackup" class="header-backup-emoji">🐻</div>
+                
                 <div class="header-text">
                     <h1>Money Game</h1>
                     <p>Just do it ✨</p>
                 </div>
             </div>
-            <select class="currency-selector" id="currencySelector" onchange="changeCurrency(this.value)">
-                <option value="CLP">CLP 🇨🇱</option>
-                <option value="USD">USD 🇺🇸</option>
-            </select>
         </header>
 
         <div class="month-selector">
@@ -700,6 +711,14 @@
                     <label>Monto</label>
                     <input type="number" id="expenseAmount" placeholder="0" min="0">
                 </div>
+                <div class="form-group">
+                    <label>Frecuencia</label>
+                    <div class="expense-type-selector">
+                        <button class="type-btn active" onclick="setExpenseType(this, 'once')">Una vez</button>
+                        <button class="type-btn" onclick="setExpenseType(this, 'recurring')">Mensual</button>
+                    </div>
+                    <input type="hidden" id="expenseType" value="once">
+                </div>
                 <button onclick="addExpense()" style="background-color: var(--danger);">Registrar Gasto 💸</button>
             </div>
 
@@ -788,6 +807,12 @@
             document.getElementById('incomeType').value = type;
         }
 
+        function setExpenseType(btn, type) {
+            btn.parentElement.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('expenseType').value = type;
+        }
+
         function formatCurrency(amount) {
             const converted = amount / currencyRates[data.currency];
             return currencySymbols[data.currency] + converted.toLocaleString('es-CL', { maximumFractionDigits: 0 });
@@ -818,11 +843,12 @@
             const description = document.getElementById('expenseDescription').value;
             const category = document.getElementById('expenseCategory').value;
             const amount = parseFloat(document.getElementById('expenseAmount').value);
+            const type = document.getElementById('expenseType').value;
 
             if (!description || !amount) return alert('Completa los campos 🙏');
 
             if (!data.expenses[data.currentMonth]) data.expenses[data.currentMonth] = [];
-            data.expenses[data.currentMonth].push({ description, category, amount });
+            data.expenses[data.currentMonth].push({ description, category, amount, type });
 
             document.getElementById('expenseDescription').value = '';
             document.getElementById('expenseAmount').value = '';
@@ -982,8 +1008,9 @@
                 empty.style.display = 'none';
                 document.getElementById('incomeTable').style.display = 'table';
                 items.forEach((item, idx) => {
+                    const isRecurring = item.type === 'recurring';
                     const row = `<tr>
-                        <td><b>${item.description}</b><br><span style="font-size:0.8em; color:#999">${item.type === 'once' ? 'Único' : 'Mensual'}</span></td>
+                        <td><b>${item.description}</b><br><span style="font-size:0.8em; color:#999">${isRecurring ? '🔄 Mensual' : '📅 Único'}</span></td>
                         <td style="color:var(--success); font-weight:700;">+${formatCurrency(item.amount)}</td>
                         <td style="text-align:right;"><button class="btn-small" onclick="deleteIncome(${idx})">✕</button></td>
                     </tr>`;
@@ -1005,8 +1032,9 @@
                 empty.style.display = 'none';
                 document.getElementById('expenseTable').style.display = 'table';
                 items.forEach((item, idx) => {
+                    const isRecurring = item.type === 'recurring';
                     const row = `<tr>
-                        <td><b>${item.description}</b><br><span style="font-size:0.8em; color:#999">${item.category}</span></td>
+                        <td><b>${item.description}</b><br><span style="font-size:0.8em; color:#999">${item.category} ${isRecurring ? '• 🔄' : ''}</span></td>
                         <td style="color:var(--danger); font-weight:700;">-${formatCurrency(item.amount)}</td>
                         <td style="text-align:right;"><button class="btn-small" onclick="deleteExpense(${idx})">✕</button></td>
                     </tr>`;
