@@ -15,7 +15,7 @@
     <title>Money Game 🐻</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'); /* Fuente gordita para títulos */
 
         * {
             margin: 0;
@@ -50,6 +50,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg);
+            /* Fondo sutil */
             background-image: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/9ca668e1-5d2f-4870-976a-6da03921928e');
             background-size: cover;
             background-position: center;
@@ -72,74 +73,89 @@
             padding-bottom: 120px;
         }
 
-        /* HEADER */
+        /* --- NUEVO BANNER ESTILO "KAWAII" --- */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 15px 20px;
+            /* Degradado suave pastel */
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); 
+            background-image: radial-gradient(#7BA8A8 1px, transparent 1px), radial-gradient(#7BA8A8 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-color: #fff9f0; /* Fondo base crema */
+            
+            border-radius: 24px;
+            padding: 20px;
             margin-bottom: 20px;
-            color: var(--text);
-            box-shadow: 0 10px 25px rgba(123, 168, 168, 0.15);
-            border: 2px solid var(--primary-light);
-            display: flex;
-            align-items: center;
-            position: relative; /* Para posicionar el selector absoluto */
+            box-shadow: 0 8px 20px rgba(123, 168, 168, 0.15);
+            border: 4px solid white;
+            position: relative;
+            overflow: hidden;
+            text-align: center; /* Centrar todo */
         }
 
-        .header-left {
+        /* Círculo decorativo de fondo */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 200px;
+            height: 200px;
+            background: rgba(155, 201, 151, 0.1); /* Verde suave */
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 150px;
+            height: 150px;
+            background: rgba(245, 184, 184, 0.15); /* Rosa suave */
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1; /* Para que esté sobre los círculos */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            width: 100%;
+            gap: 10px;
         }
 
         .header-logo {
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
-            border: 2px solid var(--primary);
+            border: 4px solid white;
             object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             background-color: white;
-        }
-
-        .header-backup-emoji {
-            font-size: 35px;
-            display: none; /* Se muestra solo si falla la imagen */
-            margin-right: 10px;
         }
 
         .header-text h1 {
             font-family: 'Fredoka One', cursive;
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: var(--primary-dark);
-            line-height: 1.1;
-            margin-bottom: 2px;
+            line-height: 1;
+            margin-bottom: 4px;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
         }
 
         .header-text p {
-            font-size: 0.75em;
+            font-size: 0.85em;
             color: var(--text-light);
-            font-weight: 600;
+            font-weight: 700;
+            background: rgba(255,255,255,0.6);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
         }
 
-        /* SELECTOR DE MONEDA FLOTANTE */
-        .currency-selector {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255,255,255,0.8);
-            border: 1px solid var(--primary-light);
-            border-radius: 8px;
-            padding: 2px 6px;
-            color: var(--text-light);
-            font-size: 0.7em;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: 'Poppins';
-            outline: none;
-            backdrop-filter: blur(4px);
-        }
+        /* --- FIN BANNER --- */
 
         .month-selector {
             background: var(--surface);
@@ -585,14 +601,9 @@
 <body>
     <div class="container">
         <header>
-            <select class="currency-selector" id="currencySelector" onchange="changeCurrency(this.value)">
-                <option value="CLP">CLP</option>
-                <option value="USD">USD</option>
-            </select>
-
-            <div class="header-left">
+            <div class="header-content">
                 <img src="./logo.png" alt="Logo" class="header-logo" onerror="this.style.display='none'; document.getElementById('emojiBackup').style.display='block'">
-                <div id="emojiBackup" class="header-backup-emoji">🐻</div>
+                <div id="emojiBackup" style="font-size: 40px; display:none; margin-bottom:5px;">🐻</div>
                 
                 <div class="header-text">
                     <h1>Money Game</h1>
@@ -763,8 +774,8 @@
     </div>
 
     <script>
+        // ELIMINADA: Lógica de cambio de moneda. Por defecto es CLP.
         let data = {
-            currency: 'CLP',
             currentMonth: new Date().toISOString().slice(0, 7),
             incomeDate: null,
             income: {},
@@ -773,18 +784,9 @@
             goalsHistory: {}
         };
 
-        const currencySymbols = { 'CLP': '$', 'USD': '$' };
-        const currencyRates = { 'CLP': 1, 'USD': 850 };
-
         function initApp() {
             document.getElementById('monthInput').value = data.currentMonth;
             loadData();
-            render();
-        }
-
-        function changeCurrency(currency) {
-            data.currency = currency;
-            saveData();
             render();
         }
 
@@ -814,8 +816,8 @@
         }
 
         function formatCurrency(amount) {
-            const converted = amount / currencyRates[data.currency];
-            return currencySymbols[data.currency] + converted.toLocaleString('es-CL', { maximumFractionDigits: 0 });
+            // Simplificado a CLP (formato chileno)
+            return '$' + amount.toLocaleString('es-CL', { maximumFractionDigits: 0 });
         }
 
         function addIncome() {
@@ -1124,6 +1126,8 @@
             if (saved) {
                 data = JSON.parse(saved);
                 if(!data.goalsHistory) data.goalsHistory = {};
+                // Limpieza de moneda si existía
+                delete data.currency; 
             }
         }
 
